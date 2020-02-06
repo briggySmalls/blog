@@ -6,6 +6,10 @@ title = "Sam Briggs [software developer]"
 theme = "hugo-theme-sam"
 googleAnalytics = "UA-157531859-1"
 
+[taxonomies]
+    series = "series"
+    tag = "tags"
+
 [params]
     dateform = "2 Jan 2006"
     homepage = "home" # What to call the home page link
