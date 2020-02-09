@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on Sam Briggs [software developer]</title>
-    <link>https://sambriggs.dev/posts/</link>
-    <description>Recent content in Posts on Sam Briggs [software developer]</description>
+    <title>circle-ci on Sam Briggs [software developer]</title>
+    <link>https://sambriggs.dev/tags/circle-ci/</link>
+    <description>Recent content in circle-ci on Sam Briggs [software developer]</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
     <lastBuildDate>Sun, 09 Feb 2020 23:30:00 +0000</lastBuildDate>
     
-	<atom:link href="https://sambriggs.dev/posts/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://sambriggs.dev/tags/circle-ci/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -21,18 +21,6 @@
 This manifested in two ways, where I&amp;rsquo;d made the same mistake in two different jobs.
 Deployment issues The deploy job appeared to work correctly, but when I navigated to the site I was greeted with a 404 error:
 HTML-proofer internal link checks And when I ran the htmlproofer tool on my generated site I was greeted with a slew of errors:</description>
-    </item>
-    
-    <item>
-      <title>The birth of a blog</title>
-      <link>https://sambriggs.dev/posts/the-birth-of-a-blog/</link>
-      <pubDate>Mon, 03 Feb 2020 14:59:18 +0000</pubDate>
-      
-      <guid>https://sambriggs.dev/posts/the-birth-of-a-blog/</guid>
-      <description>Introduction This post is about how I set up this site!
-Framework So I wanted a static site generator. You know, the trendy, &amp;lsquo;lightning-fast&amp;rsquo;, modern-web-has-gone-full-circle technology. Because I just want to write some text that people can read, and I can execute a build step without hurting myself.
- Perfect is the enemy of good
- Knowing I&amp;rsquo;m the kind of person who often lets perfect get the better of me, I didn&amp;rsquo;t want to get stuck at step one this time.</description>
     </item>
     
   </channel>
