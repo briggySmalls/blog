@@ -103,7 +103,7 @@ without hurting myself.</p>
 </blockquote>
 <p>Knowing I&rsquo;m the kind of person who often lets perfect get the better of me, I didn&rsquo;t want to get stuck
 at step one <em>this</em> time.</p>
-<p>I took the top three static site frameworks from <a href="stackshare-generators">stackshare</a>: Jekyll, Gatsby,
+<p>I took the top three static site frameworks from <a href="https://stackshare.io/static-site-generators">stackshare</a>: Jekyll, Gatsby,
 Hugo. And whittled them down through opinionated first-impressions and prejudices:</p>
 <ol>
 <li><a href="https://www.gatsbyjs.org/">Gatsby</a> is react-based and seemed to be peddling <a href="https://jamstack.org/">JAMstack</a>
@@ -142,14 +142,14 @@ hit a brick wall.</p>
 <p>So I built the site in a <a href="https://circleci.com/">circleci</a> pipeline and deployed to GitHub pages. I
 like circleci because you can use docker images for each job, unlike e.g. travis, which can save some
 time installing dependencies.</p>
-<p>After following some <a href="circleci-tutorial-github">instructions</a>, the job that pushes to GitHub pages announced:</p>
+<p>After following some <a href="https://circleci.com/blog/deploying-documentation-to-github-pages-with-continuous-integration/">instructions</a>, the job that pushes to GitHub pages announced:</p>
 <!-- raw HTML omitted -->
 <pre><code>ERROR: The key you are authenticating with has been marked as read only.
 </code></pre><!-- raw HTML omitted -->
 <p>Clearly I&rsquo;d lost patience reading, because the &lsquo;Provisioning a deploy key&rsquo; section contained it all.
 Once I created a new key and gave the public part to GitHub and the private to circleci I was in business!
 Seriously, take your time with that article, it has everything you need.</p>
-<p>You can see the pipeline config <a href="blog-circleci-config">here</a> in all its glory.</p>
+<p>You can see the pipeline config <a href="https://github.com/briggySmalls/blog/blob/a5c9745a1134491a0369aee7bf43883e8b045b3d/.circleci/config.yml">here</a> in all its glory.</p>
 <h2 id="conclusion">Conclusion</h2>
 <p>And there we have it! A Hugo site, built on circleci, deployed on GitHub pages. The internet has yet
 another blog.</p>
