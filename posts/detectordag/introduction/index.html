@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+<meta name="description" content="The software blog of Sam Briggs, just another nerd.">
+<title>
+Introduction - Sam Briggs [software developer]
+</title>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.min.81bbafc4df93b11c1c3e2449464373c384aa4903731b4fc7a77dfcdd979e184f.css" integrity="sha256-gbuvxN&#43;TsRwcPiRJRkNzw4SqSQNzG0/Hp3383ZeeGE8=" crossorigin="anonymous" media="screen">
+
+
+
+ 
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Didact+Gothic">
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Introduction"/>
+<meta name="twitter:description" content="My latest project was inspired when my best friend&rsquo;s mum came to me with a problem:
+ A while back there was a powercut in Alderney1, the circuit breaker tripped, and all the food in our freezer spoiled. Can we find something that will warn us if that has happened, so we can send a neighbour round?
+ I felt confident that something would already exist, and sure enough a cursory search turned up a couple of products2."/>
+
+<meta property="og:title" content="Introduction" />
+<meta property="og:description" content="My latest project was inspired when my best friend&rsquo;s mum came to me with a problem:
+ A while back there was a powercut in Alderney1, the circuit breaker tripped, and all the food in our freezer spoiled. Can we find something that will warn us if that has happened, so we can send a neighbour round?
+ I felt confident that something would already exist, and sure enough a cursory search turned up a couple of products2." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://sambriggs.dev/posts/detectordag/introduction/" />
+<meta property="article:published_time" content="2020-04-13T10:33:44+01:00" />
+<meta property="article:modified_time" content="2020-04-13T10:33:44+01:00" /><meta property="og:site_name" content="Sam Briggs" />
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-157531859-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+    
+
+    
+    
+    
+    <title>
+        
+        Introduction
+        
+    </title>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="section" id="title">Introduction</div>
+
+        
+<div class="section" id="content">
+    13 Apr 2020 &#183; 359 words
+    <div class="tag-container">
+        
+        
+        <span class="tag">
+            <a href="/tags/detectordag/">
+                detectordag
+            </a>
+        </span>
+        
+        
+    </div>
+    <hr/>
+    <p>My latest project was inspired when my best friend&rsquo;s mum came to me with a problem:</p>
+<blockquote>
+<p>A while back there was a powercut in Alderney<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>, the circuit breaker tripped, and all the food
+in our freezer spoiled.
+Can we find something that will warn us if that has happened, so we can send a neighbour round?</p>
+</blockquote>
+<p>I felt confident that something would already exist, and sure enough a cursory search turned up a couple
+of products<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>.
+They worked by plugging into a mains socket, acting as a passthrough for electricity,
+but loaded with a SIM card to text predefined numbers if the power failed.
+However I was pretty surprised at how pricey they were (£125 and £150), given they looked a bit dated.</p>
+<p>The problem was further defined:</p>
+<blockquote>
+<p>We have two circuit rings in our house, and during the previous powercut one circuit stayed up and
+the other tripped.
+I don&rsquo;t really want to spend ~£300 because we need two of them.</p>
+</blockquote>
+<p>At this point I could feel myself itching to solve this with a signature overengineered solution.
+With images of raspberry pi&rsquo;s, cloud databases, email notifications, flying through my head, I tried
+to find a <em>quick</em> solution:</p>
+<ul>
+<li>Maybe Alderney electricity board have an API for announcing power failures<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>? ❌</li>
+<li>Maybe UPSs already exist that could power a freezer and have in-built notifications<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>? ❌</li>
+</ul>
+<p>Who was I kidding, by this point my weakness for overcomplicating life had set in. I wanted to try my
+hand at this IoT project.</p>
+<blockquote>
+<p>In a desperate and percipient attempt to stop the inevitable, Dad quickly took me to Spurs to see
+Jimmy Greaves score four against Sunderland in a 5-1 win, but the damage had been done, and the six
+goals and all the great players left me cold: I’d already fallen for the team that beat Stoke 1-0 from
+a penalty rebound.</p>
+<hr>
+<p>Fever Pitch - Nick Hornby</p>
+</blockquote>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p><a href="https://en.wikipedia.org/wiki/Alderney">Alderney</a> is a tiny island that I happen to love, where
+they have a second home. <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2" role="doc-endnote">
+<p><a href="https://www.isocket.eu/">isocket</a> and <a href="https://www.tekview-solutions.com/powertxt.php">powertxt</a>. <a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3" role="doc-endnote">
+<p>Honestly, if you look at their <a href="http://www.alderney-elec.com/html/failure.php">power failure advice</a>
+you&rsquo;d realise how funny this question is. <a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4" role="doc-endnote">
+<p><a href="https://community.spiceworks.com/topic/610697-can-someone-help-me-find-a-ups-battery-backup-that-will-power-this-fridge">inductive loads not suitable for UPSs.</a> <a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+
+</div>
+
+
+        
+<div class="section bottom-menu">
+    
+<hr />
+<p>
+
+
+    
+        <a href="/posts">back</a>
+        
+            &#183;
+        
+    
+
+    
+        
+            <a href="/about">about</a>
+        
+    
+    
+        
+            &#183; 
+            <a href="/posts">posts</a>
+        
+            &#183; 
+            <a href="https://github.com/briggySmalls">github</a>
+        
+    
+    &#183; 
+    <a href="https://sambriggs.dev/">
+        home
+    </a>
+
+</p>
+</div>
+
+
+        <div class="section footer">The software blog of Sam Briggs, just another nerd.</div>
+    </div>
+</body>
+
+</html>

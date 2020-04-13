@@ -6,10 +6,21 @@
     <description>Recent content in Posts on Sam Briggs [software developer]</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
-    <lastBuildDate>Sun, 09 Feb 2020 23:30:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 13 Apr 2020 10:33:44 +0100</lastBuildDate>
     
 	<atom:link href="https://sambriggs.dev/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Introduction</title>
+      <link>https://sambriggs.dev/posts/detectordag/introduction/</link>
+      <pubDate>Mon, 13 Apr 2020 10:33:44 +0100</pubDate>
+      
+      <guid>https://sambriggs.dev/posts/detectordag/introduction/</guid>
+      <description>My latest project was inspired when my best friend&amp;rsquo;s mum came to me with a problem:
+ A while back there was a powercut in Alderney1, the circuit breaker tripped, and all the food in our freezer spoiled. Can we find something that will warn us if that has happened, so we can send a neighbour round?
+ I felt confident that something would already exist, and sure enough a cursory search turned up a couple of products2.</description>
+    </item>
     
     <item>
       <title>CircleCI workspaces</title>
