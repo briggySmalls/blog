@@ -36,12 +36,12 @@ Concepts - Sam Briggs [software developer]
 <meta name="twitter:title" content="Concepts"/>
 <meta name="twitter:description" content="I set to work designing a system for monitoring power remotely, and came up with a few iterations.
 All of my concepts revolved around a few assumptions:
- A device would be a cheap Raspberry Pi Zero There would be a cloud that could receive staus updates from multiple devices The cloud would email users in the case of a power failure  Iteration 1: I&rsquo;m alive My initial ideas revolved around connecting a Raspberry Pi to the house&rsquo;s WiFi network:"/>
+ A device would be a cheap Raspberry Pi Zero There would be a server that could receive staus updates from multiple devices The server would email users in the case of a power failure  Iteration 1: I&rsquo;m alive My initial ideas revolved around connecting a Raspberry Pi to the house&rsquo;s WiFi network:"/>
 
 <meta property="og:title" content="Concepts" />
 <meta property="og:description" content="I set to work designing a system for monitoring power remotely, and came up with a few iterations.
 All of my concepts revolved around a few assumptions:
- A device would be a cheap Raspberry Pi Zero There would be a cloud that could receive staus updates from multiple devices The cloud would email users in the case of a power failure  Iteration 1: I&rsquo;m alive My initial ideas revolved around connecting a Raspberry Pi to the house&rsquo;s WiFi network:" />
+ A device would be a cheap Raspberry Pi Zero There would be a server that could receive staus updates from multiple devices The server would email users in the case of a power failure  Iteration 1: I&rsquo;m alive My initial ideas revolved around connecting a Raspberry Pi to the house&rsquo;s WiFi network:" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://sambriggs.dev/posts/detectordag/concepts/" />
 <meta property="article:published_time" content="2020-04-13T11:41:03+01:00" />
@@ -77,7 +77,7 @@ if (!doNotTrack) {
 
         
 <div class="section" id="content">
-    13 Apr 2020 &#183; 558 words
+    13 Apr 2020 &#183; 632 words
     <div class="tag-container">
         
         
@@ -94,15 +94,15 @@ if (!doNotTrack) {
 <p>All of my concepts revolved around a few assumptions:</p>
 <ul>
 <li>A device would be a cheap Raspberry Pi Zero</li>
-<li>There would be a cloud that could receive staus updates from multiple devices</li>
-<li>The cloud would email users in the case of a power failure</li>
+<li>There would be a server that could receive staus updates from multiple devices</li>
+<li>The server would email users in the case of a power failure</li>
 </ul>
 <h2 id="iteration-1-im-alive">Iteration 1: I&rsquo;m alive</h2>
 <p>My initial ideas revolved around connecting a Raspberry Pi to the house&rsquo;s WiFi network:</p>
 <p><img src="/_gen/archie/im-alive-context-device.png" alt="iteration-1"></p>
 <ul>
 <li>Devices are connected to home WiFi network</li>
-<li>Devices send &lsquo;I&rsquo;m alive&rsquo; messages to the server</li>
+<li>Devices send &ldquo;I&rsquo;m alive&rdquo; messages to the server</li>
 <li>During a power cut, the devices die and no messages are sent</li>
 <li>The server informs users of a failure after a device hasn&rsquo;t been seen for a while</li>
 </ul>
@@ -110,34 +110,37 @@ if (!doNotTrack) {
 <ul>
 <li>I didn&rsquo;t much like using internet connectivity as a proxy for power.
 I could envisage false positives in cases where the internet failed, or the Pi&rsquo;s WiFi connection failed.</li>
-<li>I didn&rsquo;t relish the prospect of getting non-technical users to connect Pi Zero&rsquo;s to their home network.</li>
+<li>I didn&rsquo;t relish the prospect of getting non-technical users to connect Pi Zero&rsquo;s to their home network.
+It would likely require a setup step where the Pi presents itself as an <a href="https://iot.stackexchange.com/a/658">access point</a>.
+Then would it need a reset button? Urgh.</li>
 </ul>
 <h2 id="iteration-2-im-dead">Iteration 2: I&rsquo;m dead</h2>
-<p>I really preferred to have a convincing &lsquo;power lost&rsquo; signal rather than relying on the <em>absence</em> of an
-&lsquo;I&rsquo;m alive&rsquo; message. However this required the Pi to remain powered during a powercut, at least long
-enough to send a &lsquo;power lost&rsquo; message.</p>
+<p>I really preferred to have a convincing &ldquo;power lost&rdquo; message rather than relying on the <em>absence</em> of
+receiving &ldquo;I&rsquo;m alive&rdquo;. However this required the Pi to remain powered during a powercut - at least long
+enough to send the message.</p>
 <p>I found the <a href="https://www.aliexpress.com/item/32954180664.html">UPSLite</a>,
 a reasonably-priced, uninterruptable power supply shield designed for the Pi Zero.
-It includes a digital signal connected to a GPIO pin to indicate power status, as well as extra
-features such as battery capacity/voltage.</p>
+It includes a digital signal connected to a GPIO pin that indicates power status, as well as extra
+features such as allowing the Pi to interrogate battery capacity/voltage.</p>
 <p><img src="/_gen/archie/im-dead-context-device.png" alt="iteration-2-device"></p>
-<p>Ok, so now the Pi can send a &lsquo;power lost&rsquo; message. But if there&rsquo;s been a power cut the router is probably
+<p>Ok, so now the Pi can send a &ldquo;power lost&rdquo; message. But if there&rsquo;s been a power cut the router is probably
 down too! Fine, lets throw in a <a href="https://www.amazon.co.uk/gp/product/B075QZQSS1">small UPS</a> for the
 router too.</p>
 <p><img src="/_gen/archie/im-dead-context.png" alt="iteration-1"></p>
 <ul>
 <li>Devices are connected to home WiFi network</li>
 <li>During a power cut the UPSs for the device and router keep both running</li>
-<li>The devices send a &lsquo;power lost&rsquo; message to the server</li>
-<li>The server sends an email upon receiving a &lsquo;power lost&rsquo; message</li>
+<li>The devices send a &ldquo;power lost&rdquo; message to the server</li>
+<li>The server sends an email upon receiving a &ldquo;power lost&rdquo; message</li>
 </ul>
 <p>My concerns with <em>this</em> design were:</p>
 <ul>
-<li>Initial research suggested the internet might stay up during a powercut
+<li>Just because the router is powered, will the local area&rsquo;s internet still be up during a powercut?
+Initial research suggested it <em>would</em>
 (internet providers would probably have their own generators).
 However my use case was <a href="https://en.wikipedia.org/wiki/Alderney"><em>Alderney</em></a>
 where normal assumptions about infrastructure may not hold true&hellip;</li>
-<li>The system still depends on WiFi between a couple of Pis and the router.
+<li>The system still depends on a WiFi connection between the Pis and the router.
 I just felt superstious about leaving these devices for long periods of time, unattended,
 and relying that they&rsquo;d be connected for these rare, important events.</li>
 </ul>
@@ -149,8 +152,8 @@ you&rsquo;ll realise that I&rsquo;ve just reinvented the products discussed ther
 <ul>
 <li>Devices are connected to the internet using a USB dongle loaded with a data SIM</li>
 <li>During a power cut the UPSs for the devices keep them running</li>
-<li>The devices send a &lsquo;power lost&rsquo; message to the server</li>
-<li>The server sends an email upon receiving a &lsquo;power lost&rsquo; message</li>
+<li>The devices send a &ldquo;power lost&rdquo; message to the server</li>
+<li>The server sends an email upon receiving a &ldquo;power lost&rdquo; message</li>
 </ul>
 <p>I had reservations about this design too, of course:</p>
 <ul>
@@ -158,6 +161,10 @@ you&rsquo;ll realise that I&rsquo;ve just reinvented the products discussed ther
 </ul>
 <p>But what I liked about this was the removal of any configuration steps aside from activating a SIM card.
 My end users should be able to plug-and-play.</p>
+<p>Love it.</p>
+<h2 id="onwards">Onwards</h2>
+<p>Ok, so this post has attempted to justify the design decisions. But let&rsquo;s remember I like things complicated.
+So take everything here with a few grains of salt, life tastes better that way&hellip;</p>
 
 </div>
 
