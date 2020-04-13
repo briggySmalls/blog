@@ -12,6 +12,17 @@
     
     
     <item>
+      <title>Concepts</title>
+      <link>https://sambriggs.dev/posts/detectordag/concepts/</link>
+      <pubDate>Mon, 13 Apr 2020 11:41:03 +0100</pubDate>
+      
+      <guid>https://sambriggs.dev/posts/detectordag/concepts/</guid>
+      <description>I set to work designing a system for monitoring power remotely, and came up with a few iterations.
+All of my concepts revolved around a few assumptions:
+ A device would be a cheap Raspberry Pi Zero There would be a cloud that could receive staus updates from multiple devices The cloud would email users in the case of a power failure  Iteration 1: I&amp;rsquo;m alive My initial ideas revolved around connecting a Raspberry Pi to the house&amp;rsquo;s WiFi network:</description>
+    </item>
+    
+    <item>
       <title>Introduction</title>
       <link>https://sambriggs.dev/posts/detectordag/introduction/</link>
       <pubDate>Mon, 13 Apr 2020 10:33:44 +0100</pubDate>
