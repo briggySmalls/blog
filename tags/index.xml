@@ -6,10 +6,28 @@
     <description>Recent content in Tags on Sam Briggs [software developer]</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
-    <lastBuildDate>Sun, 09 Feb 2020 23:30:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 14 Apr 2020 21:35:06 +0100</lastBuildDate>
     
 	<atom:link href="https://sambriggs.dev/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>github-pages</title>
+      <link>https://sambriggs.dev/tags/github-pages/</link>
+      <pubDate>Tue, 14 Apr 2020 21:35:06 +0100</pubDate>
+      
+      <guid>https://sambriggs.dev/tags/github-pages/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>hugo</title>
+      <link>https://sambriggs.dev/tags/hugo/</link>
+      <pubDate>Tue, 14 Apr 2020 21:35:06 +0100</pubDate>
+      
+      <guid>https://sambriggs.dev/tags/hugo/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>circle-ci</title>
@@ -17,15 +35,6 @@
       <pubDate>Sun, 09 Feb 2020 23:30:00 +0000</pubDate>
       
       <guid>https://sambriggs.dev/tags/circle-ci/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>hugo</title>
-      <link>https://sambriggs.dev/tags/hugo/</link>
-      <pubDate>Mon, 03 Feb 2020 14:59:18 +0000</pubDate>
-      
-      <guid>https://sambriggs.dev/tags/hugo/</guid>
       <description></description>
     </item>
     
