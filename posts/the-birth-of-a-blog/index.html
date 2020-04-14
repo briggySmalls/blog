@@ -113,8 +113,7 @@ without hurting myself.</p>
 at step one <em>this</em> time.</p>
 <p>I took the top three static site frameworks from <a
   href="https://stackshare.io/static-site-generators"
-  target="_blank"
-  rel="noopener">
+  target="_blank" rel="noopener">
   stackshare
 </a>
 : Jekyll, Gatsby,
@@ -122,22 +121,19 @@ Hugo. And whittled them down through opinionated first-impressions and prejudice
 <ol>
 <li><a
   href="https://www.gatsbyjs.org/"
-  target="_blank"
-  rel="noopener">
+  target="_blank" rel="noopener">
   Gatsby
 </a>
  is react-based and seemed to be peddling <a
   href="https://jamstack.org/"
-  target="_blank"
-  rel="noopener">
+  target="_blank" rel="noopener">
   JAMstack
 </a>
 
 &lsquo;webapp&rsquo;. This sounded a lot like &lsquo;javascript bloat&rsquo; for a blog use-case.</li>
 <li>I&rsquo;d used <a
   href="https://jekyllrb.com/"
-  target="_blank"
-  rel="noopener">
+  target="_blank" rel="noopener">
   Jekyll
 </a>
  once before, and for my chosen theme I had to commit some
@@ -145,8 +141,7 @@ file dump and modify the theme files directly. Maybe this isn&rsquo;t always the
 scarred me. No theme updates?</li>
 <li><a
   href="https://gohugo.io/"
-  target="_blank"
-  rel="noopener">
+  target="_blank" rel="noopener">
   Hugo
 </a>
  is like Jekyll, but <em>new</em>, and Go 🥰.</li>
@@ -154,16 +149,14 @@ scarred me. No theme updates?</li>
 <h2 id="setup">Setup</h2>
 <p>Being on mac, installing Hugo with <a
   href="https://brew.sh/"
-  target="_blank"
-  rel="noopener">
+  target="_blank" rel="noopener">
   homebrew
 </a>
  is breezy:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">brew install hugo
 </code></pre></div><p>And following their <a
   href="https://gohugo.io/getting-started/quick-start/"
-  target="_blank"
-  rel="noopener">
+  target="_blank" rel="noopener">
   quick-start
 </a>
  was straightforward
@@ -174,8 +167,7 @@ and updates are easy! 🙌</p>
 <h3 id="netlify-misfire">Netlify misfire</h3>
 <p>I had assumed I&rsquo;d host for free with <a
   href="https://www.netlify.com/"
-  target="_blank"
-  rel="noopener">
+  target="_blank" rel="noopener">
   netlify
 </a>
 , another trendy platform where
@@ -186,15 +178,13 @@ Hugo is a first-class citizen.</p>
 </code></pre><!-- raw HTML omitted -->
 <p>It turns out my chosen theme (<a
   href="https://themes.gohugo.io/hugo-theme-sam/"
-  target="_blank"
-  rel="noopener">
+  target="_blank" rel="noopener">
   Call me Sam
 </a>
  - what a narcissist!)
 depended on the <a
   href="https://gohugo.io/hugo-pipes/postcss/"
-  target="_blank"
-  rel="noopener">
+  target="_blank" rel="noopener">
   PostCSS &amp;lsquo;Hugo Pipe&amp;rsquo;
 </a>
 , which meant I needed
@@ -209,8 +199,7 @@ If I had to learn some platform-specific configuration, I&rsquo;d rather use one
 hit a brick wall.</p>
 <p>So I built the site in a <a
   href="https://circleci.com/"
-  target="_blank"
-  rel="noopener">
+  target="_blank" rel="noopener">
   CircleCI
 </a>
  pipeline and deployed to GitHub pages. I
@@ -218,8 +207,7 @@ like CircleCI because you can use docker images for each job, unlike e.g. travis
 time installing dependencies.</p>
 <p>After following some <a
   href="https://circleci.com/blog/deploying-documentation-to-github-pages-with-continuous-integration/"
-  target="_blank"
-  rel="noopener">
+  target="_blank" rel="noopener">
   instructions
 </a>
 , the job that pushes to GitHub pages announced:</p>
@@ -231,8 +219,7 @@ Once I created a new key and gave the public part to GitHub and the private to C
 Seriously, take your time with that article, it has everything you need.</p>
 <p>You can see the pipeline config <a
   href="https://github.com/briggySmalls/blog/blob/a5c9745a1134491a0369aee7bf43883e8b045b3d/.circleci/config.yml"
-  target="_blank"
-  rel="noopener">
+  target="_blank" rel="noopener">
   here
 </a>
  in all its glory.</p>
