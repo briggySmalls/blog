@@ -30,7 +30,7 @@ Also, coming from an embedded background, I wasn&amp;rsquo;t fussed about making
       <guid>https://sambriggs.dev/posts/detector-dag/concepts/</guid>
       <description>I set to work designing a system for monitoring power remotely, and came up with a few iterations.
 All of my concepts revolved around a few assumptions:
- A device would be a cheap Raspberry Pi Zero There would be a server that could receive staus updates from multiple devices The server would email users in the case of a power failure  Iteration 1: I&amp;rsquo;m alive My initial ideas revolved around connecting the Raspberry Pi to the house&amp;rsquo;s WiFi network:</description>
+ A device would be a cheap Raspberry Pi Zero   There would be a server that could receive staus updates from multiple devices The server would email users in the case of a power failure  Iteration 1: I&amp;rsquo;m alive My initial ideas revolved around connecting the Raspberry Pi to the house&amp;rsquo;s WiFi network:</description>
     </item>
     
     <item>
