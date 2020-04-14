@@ -9,9 +9,10 @@
 <meta name="MobileOptimized" content="320">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="referrer" content="no-referrer">
+
 <meta name="description" content="The software blog of Sam Briggs, just another nerd.">
 <title>
-Device - Choose your weapon(s) - Sam Briggs [software developer]
+    Device - Choose your weapon(s) - Sam Briggs [software developer]
 </title>
 
 
@@ -23,12 +24,11 @@ Device - Choose your weapon(s) - Sam Briggs [software developer]
 
 
 
-
-<link rel="stylesheet" href="/css/main.min.81bbafc4df93b11c1c3e2449464373c384aa4903731b4fc7a77dfcdd979e184f.css" integrity="sha256-gbuvxN&#43;TsRwcPiRJRkNzw4SqSQNzG0/Hp3383ZeeGE8=" crossorigin="anonymous" media="screen">
-
+<link rel="stylesheet" href="/css/main.min.4321edce0de245f4b1d32680d89ac669940fe5dec17e1791c721d9a0954987b4.css" integrity="sha256-QyHtzg3iRfSx0yaA2JrGaZQP5d7BfheRxyHZoJVJh7Q=" crossorigin="anonymous" media="screen">
 
 
- 
+
+
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Didact+Gothic">
 
@@ -73,14 +73,18 @@ if (!doNotTrack) {
 </head>
 
 <body>
-    <div class="wrap">
-        <div class="section" id="title">Device - Choose your weapon(s)</div>
-
+    
+    
+    <header class="wrap flex-container">
+        <h1>Device - Choose your weapon(s)</h1>
+    </header>
+    
+    <main class="wrap">
         
 <div class="flex-container">
     
     <aside role="complementary">
-        13 Apr 2020 &#183; 383 words
+        13 Apr 2020 &#183; 386 words
         <div class="tag-container">
             
         </div>
@@ -108,18 +112,43 @@ felt like something that should be in my toolkit.</p>
 I was in this for the cloud architecture lessons. So I wanted to get this end of the project done quickly
 and simply.</p>
 <h2 id="aws-iot">AWS IoT</h2>
-<p><a href="https://aws.amazon.com/iot/">AWS IoT</a> is a PaaS offering for getting connected &lsquo;things&rsquo; talking to
-the cloud (specifically, <em>Amazon&rsquo;s</em> cloud) using the ubiquitous <a href="https://mqtt.org/">MQTT</a> protocol.
-I had initally thought might try out RabbitMQ and the more secure, and feature-rich <a href="https://www.amqp.org/">AMQP</a>,
+<p><a
+  href="https://aws.amazon.com/iot/"
+  target="_blank" rel="noopener">
+  AWS IoT
+</a>
+ is a PaaS offering for getting connected &lsquo;things&rsquo; talking to
+the cloud (specifically, <em>Amazon&rsquo;s</em> cloud) using the ubiquitous <a
+  href="https://mqtt.org/"
+  target="_blank" rel="noopener">
+  MQTT
+</a>
+ protocol.
+I had initally thought might try out RabbitMQ and the more secure, and feature-rich <a
+  href="https://www.amqp.org/"
+  target="_blank" rel="noopener">
+  AMQP
+</a>
+,
 protocol, but this seemed too handy to turn down. Leave some lessons for the future, eh?</p>
 <p>As we will see later, AWS IoT plugs some of the deficiencies of MQTT, such as authentication and encryption,
 which was perfect for me to quickly dabble in a complete networking project.</p>
 <h2 id="balenacloud">BalenaCloud</h2>
-<p>In a <a href="https://github.com/briggySmalls/flipdot">previous home project</a> I&rsquo;d been frustrated that I couldn&rsquo;t
+<p>In a <a
+  href="https://github.com/briggySmalls/flipdot"
+  target="_blank" rel="noopener">
+  previous home project
+</a>
+ I&rsquo;d been frustrated that I couldn&rsquo;t
 debug issues on a Pi I had deployed in my grandpa&rsquo;s house. Given <em>this</em> project&rsquo;s primary purpose was
 to be deployed to devices in an empty house I really wanted to have a solution for fleet management:
 provisioning, deploying updates, remote debugging, etc.</p>
-<p>I was curious to try <a href="https://www.balena.io/cloud/">BalenaCloud</a>, a service I&rsquo;d encountered
+<p>I was curious to try <a
+  href="https://www.balena.io/cloud/"
+  target="_blank" rel="noopener">
+  BalenaCloud
+</a>
+, a service I&rsquo;d encountered
 on the aforementioned project only because I&rsquo;d been looking for ARM-friendly docker containers.
 Some nice features are:</p>
 <ul>
@@ -141,7 +170,12 @@ and my homebrew hack project, Python was the only answer.</p>
 <p>Not that my simplistic use case had any call for this <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:2" role="doc-endnote">
-<p>I am aware of <a href="https://www.piwheels.org/">PiWheels</a>, but some docker builds, alpine for
+<p>I am aware of <a
+  href="https://www.piwheels.org/"
+  target="_blank" rel="noopener">
+  PiWheels
+</a>
+, but some docker builds, alpine for
 example, can&rsquo;t use them. <a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
@@ -149,6 +183,7 @@ example, can&rsquo;t use them. <a href="#fnref:2" class="footnote-backref" role=
 
     </article>
     
+    <hr />
     <aside>
         <div>
             <a href="/posts/detector-dag/concepts/ ">← Concepts</a>
@@ -161,7 +196,9 @@ example, can&rsquo;t use them. <a href="#fnref:2" class="footnote-backref" role=
 
 
         
-        <div class="section bottom-menu">
+        
+        <nav role="navigation" class="flex-container bottom-menu">
+            
 <hr />
 <p>
 
@@ -183,15 +220,19 @@ example, can&rsquo;t use them. <a href="#fnref:2" class="footnote-backref" role=
         
     
     &#183; 
-    <a href="https://sambriggs.dev/">
+    <a href="/">
         home
     </a>
 
-</p></div>
+</p>
+        </nav>
         
-
-        <div class="section footer">The software blog of Sam Briggs, just another nerd.</div>
-    </div>
+        
+    </main>
+    
+    <footer class="flex-container footer">The software blog of Sam Briggs, just another nerd.</footer>
+    
+    
 </body>
 
 </html>
