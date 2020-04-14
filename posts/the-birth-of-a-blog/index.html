@@ -72,29 +72,35 @@ if (!doNotTrack) {
         <div class="section" id="title">The birth of a blog</div>
 
         
-<div class="section" id="content">
-    3 Feb 2020 &#183; 515 words
-    <div class="tag-container">
-        
-        
-        <span class="tag">
-            <a href="/tags/hugo/">
-                hugo
-            </a>
-        </span>
-        
-        
-        
-        <span class="tag">
-            <a href="/tags/web/">
-                web
-            </a>
-        </span>
-        
-        
-    </div>
-    <hr/>
-    <h2 id="introduction">Introduction</h2>
+<div class="flex-container">
+    
+    <aside role="complementary">
+        3 Feb 2020 &#183; 515 words
+        <div class="tag-container">
+            
+            
+            <span class="tag">
+                <a href="/tags/hugo/">
+                    hugo
+                </a>
+            </span>
+            
+            
+            
+            <span class="tag">
+                <a href="/tags/web/">
+                    web
+                </a>
+            </span>
+            
+            
+        </div>
+    </aside>
+    <hr />
+    
+    
+    <article role="article">
+        <h2 id="introduction">Introduction</h2>
 <p>This post is about how I set up this site!</p>
 <h2 id="framework">Framework</h2>
 <p>So I wanted a static site generator. You know, the trendy, &lsquo;lightning-fast&rsquo;, modern-web-has-gone-full-circle
@@ -156,21 +162,25 @@ Seriously, take your time with that article, it has everything you need.</p>
 <p>And there we have it! A Hugo site, built on CircleCI, deployed on GitHub pages. The internet has yet
 another blog.</p>
 
+    </article>
+    
+    <aside>
+        <div>
+            
+        </div>
+        <div>
+            <a href="/about/ ">About →</a>
+        </div>
+    </aside>
 </div>
 
 
         
-<div class="section bottom-menu">
-    
+        <div class="section bottom-menu">
 <hr />
 <p>
 
 
-    
-        <a href="/posts">back</a>
-        
-            &#183;
-        
     
 
     
@@ -192,9 +202,8 @@ another blog.</p>
         home
     </a>
 
-</p>
-</div>
-
+</p></div>
+        
 
         <div class="section footer">The software blog of Sam Briggs, just another nerd.</div>
     </div>

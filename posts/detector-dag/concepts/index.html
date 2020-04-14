@@ -36,16 +36,17 @@ Concepts - Sam Briggs [software developer]
 <meta name="twitter:title" content="Concepts"/>
 <meta name="twitter:description" content="I set to work designing a system for monitoring power remotely, and came up with a few iterations.
 All of my concepts revolved around a few assumptions:
- A device would be a cheap Raspberry Pi Zero There would be a server that could receive staus updates from multiple devices The server would email users in the case of a power failure  Iteration 1: I&rsquo;m alive My initial ideas revolved around connecting a Raspberry Pi to the house&rsquo;s WiFi network:"/>
+ A device would be a cheap Raspberry Pi Zero There would be a server that could receive staus updates from multiple devices The server would email users in the case of a power failure  Iteration 1: I&rsquo;m alive My initial ideas revolved around connecting the Raspberry Pi to the house&rsquo;s WiFi network:"/>
 
 <meta property="og:title" content="Concepts" />
 <meta property="og:description" content="I set to work designing a system for monitoring power remotely, and came up with a few iterations.
 All of my concepts revolved around a few assumptions:
- A device would be a cheap Raspberry Pi Zero There would be a server that could receive staus updates from multiple devices The server would email users in the case of a power failure  Iteration 1: I&rsquo;m alive My initial ideas revolved around connecting a Raspberry Pi to the house&rsquo;s WiFi network:" />
+ A device would be a cheap Raspberry Pi Zero There would be a server that could receive staus updates from multiple devices The server would email users in the case of a power failure  Iteration 1: I&rsquo;m alive My initial ideas revolved around connecting the Raspberry Pi to the house&rsquo;s WiFi network:" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://sambriggs.dev/posts/detectordag/concepts/" />
+<meta property="og:url" content="https://sambriggs.dev/posts/detector-dag/concepts/" />
 <meta property="article:published_time" content="2020-04-13T11:41:03+01:00" />
-<meta property="article:modified_time" content="2020-04-13T11:41:03+01:00" /><meta property="og:site_name" content="Sam Briggs" />
+<meta property="article:modified_time" content="2020-04-13T11:41:03+01:00" /><meta property="og:site_name" content="Sam Briggs" /><meta property="og:see_also" content="https://sambriggs.dev/posts/detector-dag/introduction/" /><meta property="og:see_also" content="https://sambriggs.dev/posts/detector-dag/device-choose-your-weapon/" />
+
 
 
 <script type="application/javascript">
@@ -76,30 +77,43 @@ if (!doNotTrack) {
         <div class="section" id="title">Concepts</div>
 
         
-<div class="section" id="content">
-    13 Apr 2020 &#183; 632 words
-    <div class="tag-container">
-        
-        
-        <span class="tag">
-            <a href="/tags/detectordag/">
-                detectordag
-            </a>
-        </span>
-        
-        
-    </div>
-    <hr/>
-    <p>I set to work designing a system for monitoring power remotely, and came up with a few iterations.</p>
+<div class="flex-container">
+    
+    <aside role="complementary">
+        13 Apr 2020 &#183; 632 words
+        <div class="tag-container">
+            
+        </div>
+    </aside>
+    <hr />
+    
+    
+    <aside role="complementary">
+        <div>
+            Hey! This post is part of the
+            <a href='/series/detector-dag/'>
+                detector-dag
+            </a> series.
+            If this post is missing some context you could head there to get caught up.
+        </div>
+    </aside>
+    <hr />
+    
+    <article role="article">
+        <p>I set to work designing a system for monitoring power remotely, and came up with a few iterations.</p>
 <p>All of my concepts revolved around a few assumptions:</p>
 <ul>
-<li>A device would be a cheap Raspberry Pi Zero</li>
+<li>A device would be a cheap <a href="https://www.raspberrypi.org/products/raspberry-pi-zero/">Raspberry Pi Zero</a></li>
 <li>There would be a server that could receive staus updates from multiple devices</li>
 <li>The server would email users in the case of a power failure</li>
 </ul>
 <h2 id="iteration-1-im-alive">Iteration 1: I&rsquo;m alive</h2>
-<p>My initial ideas revolved around connecting a Raspberry Pi to the house&rsquo;s WiFi network:</p>
-<p><img src="/_gen/archie/im-alive-context-device.png" alt="iteration-1"></p>
+<p>My initial ideas revolved around connecting the Raspberry Pi to the house&rsquo;s WiFi network:</p>
+<figure>
+    <img src="/_gen/archie/im-alive-context-device.png"
+         alt="iteration-1"/> 
+</figure>
+
 <ul>
 <li>Devices are connected to home WiFi network</li>
 <li>Devices send &ldquo;I&rsquo;m alive&rdquo; messages to the server</li>
@@ -122,11 +136,19 @@ enough to send the message.</p>
 a reasonably-priced, uninterruptable power supply shield designed for the Pi Zero.
 It includes a digital signal connected to a GPIO pin that indicates power status, as well as extra
 features such as allowing the Pi to interrogate battery capacity/voltage.</p>
-<p><img src="/_gen/archie/im-dead-context-device.png" alt="iteration-2-device"></p>
+<figure>
+    <img src="/_gen/archie/im-dead-context-device.png"
+         alt="iteration-2-device"/> 
+</figure>
+
 <p>Ok, so now the Pi can send a &ldquo;power lost&rdquo; message. But if there&rsquo;s been a power cut the router is probably
 down too! Fine, lets throw in a <a href="https://www.amazon.co.uk/gp/product/B075QZQSS1">small UPS</a> for the
 router too.</p>
-<p><img src="/_gen/archie/im-dead-context.png" alt="iteration-1"></p>
+<figure>
+    <img src="/_gen/archie/im-dead-context.png"
+         alt="iteration-1"/> 
+</figure>
+
 <ul>
 <li>Devices are connected to home WiFi network</li>
 <li>During a power cut the UPSs for the device and router keep both running</li>
@@ -145,10 +167,14 @@ I just felt superstious about leaving these devices for long periods of time, un
 and relying that they&rsquo;d be connected for these rare, important events.</li>
 </ul>
 <h2 id="iteration-3-im-independent">Iteration 3: I&rsquo;m independent</h2>
-<p>This iteration isn&rsquo;t so clever. If you&rsquo;ve read the <a href="https://sambriggs.dev/posts/detectordag/introduction/">Introduction</a>
+<p>This iteration isn&rsquo;t so clever. If you&rsquo;ve read the <a href="/posts/detector-dag/introduction/">Introduction</a>
 you&rsquo;ll realise that I&rsquo;ve just reinvented the products discussed there for a bit less money.</p>
 <p>Well, those guys are running a business on this model, maybe they know what they&rsquo;re doing?</p>
-<p><img src="/_gen/archie/independent-context-device.png" alt="iteration-3"></p>
+<figure>
+    <img src="/_gen/archie/independent-context-device.png"
+         alt="iteration-3"/> 
+</figure>
+
 <ul>
 <li>Devices are connected to the internet using a USB dongle loaded with a data SIM</li>
 <li>During a power cut the UPSs for the devices keep them running</li>
@@ -166,21 +192,25 @@ My end users should be able to plug-and-play.</p>
 <p>Ok, so this post has attempted to justify the design decisions. But let&rsquo;s remember I like things complicated.
 So take everything here with a few grains of salt, life tastes better that way&hellip;</p>
 
+    </article>
+    
+    <aside>
+        <div>
+            <a href="/posts/detector-dag/introduction/ ">← Introduction</a>
+        </div>
+        <div>
+            <a href="/posts/detector-dag/device-choose-your-weapon/ ">Device - Choose your weapon(s) →</a>
+        </div>
+    </aside>
 </div>
 
 
         
-<div class="section bottom-menu">
-    
+        <div class="section bottom-menu">
 <hr />
 <p>
 
 
-    
-        <a href="/posts">back</a>
-        
-            &#183;
-        
     
 
     
@@ -202,9 +232,8 @@ So take everything here with a few grains of salt, life tastes better that way&h
         home
     </a>
 
-</p>
-</div>
-
+</p></div>
+        
 
         <div class="section footer">The software blog of Sam Briggs, just another nerd.</div>
     </div>

@@ -12,22 +12,33 @@
     
     
     <item>
+      <title>Device - Choose your weapon(s)</title>
+      <link>https://sambriggs.dev/posts/detector-dag/device-choose-your-weapon/</link>
+      <pubDate>Mon, 13 Apr 2020 18:48:44 +0100</pubDate>
+      
+      <guid>https://sambriggs.dev/posts/detector-dag/device-choose-your-weapon/</guid>
+      <description>With a high-level plan sketched out, it was time to do some &amp;lsquo;part selection&amp;rsquo;.
+As someone who&amp;rsquo;s trying to reposition themselves as a &amp;lsquo;backend developer&amp;rsquo;, I knew I wanted to become familiar with AWS&amp;rsquo;s cloud offerings. It might not be the answer to every solution, but it certainly felt like something that should be in my toolkit.
+Also, coming from an embedded background, I wasn&amp;rsquo;t fussed about making a bells-and-whistles device.</description>
+    </item>
+    
+    <item>
       <title>Concepts</title>
-      <link>https://sambriggs.dev/posts/detectordag/concepts/</link>
+      <link>https://sambriggs.dev/posts/detector-dag/concepts/</link>
       <pubDate>Mon, 13 Apr 2020 11:41:03 +0100</pubDate>
       
-      <guid>https://sambriggs.dev/posts/detectordag/concepts/</guid>
+      <guid>https://sambriggs.dev/posts/detector-dag/concepts/</guid>
       <description>I set to work designing a system for monitoring power remotely, and came up with a few iterations.
 All of my concepts revolved around a few assumptions:
- A device would be a cheap Raspberry Pi Zero There would be a server that could receive staus updates from multiple devices The server would email users in the case of a power failure  Iteration 1: I&amp;rsquo;m alive My initial ideas revolved around connecting a Raspberry Pi to the house&amp;rsquo;s WiFi network:</description>
+ A device would be a cheap Raspberry Pi Zero There would be a server that could receive staus updates from multiple devices The server would email users in the case of a power failure  Iteration 1: I&amp;rsquo;m alive My initial ideas revolved around connecting the Raspberry Pi to the house&amp;rsquo;s WiFi network:</description>
     </item>
     
     <item>
       <title>Introduction</title>
-      <link>https://sambriggs.dev/posts/detectordag/introduction/</link>
+      <link>https://sambriggs.dev/posts/detector-dag/introduction/</link>
       <pubDate>Mon, 13 Apr 2020 10:33:44 +0100</pubDate>
       
-      <guid>https://sambriggs.dev/posts/detectordag/introduction/</guid>
+      <guid>https://sambriggs.dev/posts/detector-dag/introduction/</guid>
       <description>My latest project was inspired when my best friend&amp;rsquo;s mum came to me with a problem:
  A while back there was a powercut in Alderney1, the circuit breaker tripped, and all the food in our freezer spoiled. Can we find something that will warn us if that has happened, so we can send a neighbour round?
  I felt confident that something would already exist, and sure enough a cursory search turned up a couple of products2.</description>

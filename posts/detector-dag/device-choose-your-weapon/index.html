@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+<meta name="description" content="The software blog of Sam Briggs, just another nerd.">
+<title>
+Device - Choose your weapon(s) - Sam Briggs [software developer]
+</title>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.min.81bbafc4df93b11c1c3e2449464373c384aa4903731b4fc7a77dfcdd979e184f.css" integrity="sha256-gbuvxN&#43;TsRwcPiRJRkNzw4SqSQNzG0/Hp3383ZeeGE8=" crossorigin="anonymous" media="screen">
+
+
+
+ 
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Didact+Gothic">
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Device - Choose your weapon(s)"/>
+<meta name="twitter:description" content="With a high-level plan sketched out, it was time to do some &lsquo;part selection&rsquo;.
+As someone who&rsquo;s trying to reposition themselves as a &lsquo;backend developer&rsquo;, I knew I wanted to become familiar with AWS&rsquo;s cloud offerings. It might not be the answer to every solution, but it certainly felt like something that should be in my toolkit.
+Also, coming from an embedded background, I wasn&rsquo;t fussed about making a bells-and-whistles device."/>
+
+<meta property="og:title" content="Device - Choose your weapon(s)" />
+<meta property="og:description" content="With a high-level plan sketched out, it was time to do some &lsquo;part selection&rsquo;.
+As someone who&rsquo;s trying to reposition themselves as a &lsquo;backend developer&rsquo;, I knew I wanted to become familiar with AWS&rsquo;s cloud offerings. It might not be the answer to every solution, but it certainly felt like something that should be in my toolkit.
+Also, coming from an embedded background, I wasn&rsquo;t fussed about making a bells-and-whistles device." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://sambriggs.dev/posts/detector-dag/device-choose-your-weapon/" />
+<meta property="article:published_time" content="2020-04-13T18:48:44+01:00" />
+<meta property="article:modified_time" content="2020-04-13T18:48:44+01:00" /><meta property="og:site_name" content="Sam Briggs" /><meta property="og:see_also" content="https://sambriggs.dev/posts/detector-dag/introduction/" /><meta property="og:see_also" content="https://sambriggs.dev/posts/detector-dag/concepts/" />
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-157531859-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+    
+
+    
+    
+    
+    <title>
+        
+        Device - Choose your weapon(s)
+        
+    </title>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="section" id="title">Device - Choose your weapon(s)</div>
+
+        
+<div class="flex-container">
+    
+    <aside role="complementary">
+        13 Apr 2020 &#183; 383 words
+        <div class="tag-container">
+            
+        </div>
+    </aside>
+    <hr />
+    
+    
+    <aside role="complementary">
+        <div>
+            Hey! This post is part of the
+            <a href='/series/detector-dag/'>
+                detector-dag
+            </a> series.
+            If this post is missing some context you could head there to get caught up.
+        </div>
+    </aside>
+    <hr />
+    
+    <article role="article">
+        <p>With a high-level plan sketched out, it was time to do some &lsquo;part selection&rsquo;.</p>
+<p>As someone who&rsquo;s trying to reposition themselves as a &lsquo;backend developer&rsquo;, I knew I wanted to
+become familiar with AWS&rsquo;s cloud offerings. It might not be the answer to every solution, but it certainly
+felt like something that should be in my toolkit.</p>
+<p>Also, coming from an embedded background, I wasn&rsquo;t fussed about making a bells-and-whistles device.
+I was in this for the cloud architecture lessons. So I wanted to get this end of the project done quickly
+and simply.</p>
+<h2 id="aws-iot">AWS IoT</h2>
+<p><a href="https://aws.amazon.com/iot/">AWS IoT</a> is a PaaS offering for getting connected &lsquo;things&rsquo; talking to
+the cloud (specifically, <em>Amazon&rsquo;s</em> cloud) using the ubiquitous <a href="https://mqtt.org/">MQTT</a> protocol.
+I had initally thought might try out RabbitMQ and the more secure, and feature-rich <a href="https://www.amqp.org/">AMQP</a>,
+protocol, but this seemed too handy to turn down. Leave some lessons for the future, eh?</p>
+<p>As we will see later, AWS IoT plugs some of the deficiencies of MQTT, such as authentication and encryption,
+which was perfect for me to quickly dabble in a complete networking project.</p>
+<h2 id="balenacloud">BalenaCloud</h2>
+<p>In a <a href="https://github.com/briggySmalls/flipdot">previous home project</a> I&rsquo;d been frustrated that I couldn&rsquo;t
+debug issues on a Pi I had deployed in my grandpa&rsquo;s house. Given <em>this</em> project&rsquo;s primary purpose was
+to be deployed to devices in an empty house I really wanted to have a solution for fleet management:
+provisioning, deploying updates, remote debugging, etc.</p>
+<p>I was curious to try <a href="https://www.balena.io/cloud/">BalenaCloud</a>, a service I&rsquo;d encountered
+on the aforementioned project only because I&rsquo;d been looking for ARM-friendly docker containers.
+Some nice features are:</p>
+<ul>
+<li>SSH terminal access</li>
+<li>Whole-fleet and per-device environment variables</li>
+<li>Docker-push-like deployment</li>
+<li>Support for multi-container applications<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></li>
+</ul>
+<h2 id="python-">&hellip;Python 🤦‍♀️</h2>
+<p>Now, don&rsquo;t get me wrong. Python has its uses. But I&rsquo;ve tried playing with Pi&rsquo;s, Docker, and Python
+before, and the whole ARMv7 architecture thing was a real nightmare. Life isn&rsquo;t as simple as <code>pip install</code>
+when you watch your tiny Pi trying to compile numpy from source<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>.</p>
+<p>Sadly the AWS IoT Device SDK only came in Embedded C, Java, Javascript, and Python flavours. For me
+and my homebrew hack project, Python was the only answer.</p>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>Not that my simplistic use case had any call for this <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2" role="doc-endnote">
+<p>I am aware of <a href="https://www.piwheels.org/">PiWheels</a>, but some docker builds, alpine for
+example, can&rsquo;t use them. <a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+
+    </article>
+    
+    <aside>
+        <div>
+            <a href="/posts/detector-dag/concepts/ ">← Concepts</a>
+        </div>
+        <div>
+            
+        </div>
+    </aside>
+</div>
+
+
+        
+        <div class="section bottom-menu">
+<hr />
+<p>
+
+
+    
+
+    
+        
+            <a href="/about">about</a>
+        
+    
+    
+        
+            &#183; 
+            <a href="/posts">posts</a>
+        
+            &#183; 
+            <a href="https://github.com/briggySmalls">github</a>
+        
+    
+    &#183; 
+    <a href="https://sambriggs.dev/">
+        home
+    </a>
+
+</p></div>
+        
+
+        <div class="section footer">The software blog of Sam Briggs, just another nerd.</div>
+    </div>
+</body>
+
+</html>

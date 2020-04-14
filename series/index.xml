@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Series on Sam Briggs [software developer]</title>
+    <link>https://sambriggs.dev/series/</link>
+    <description>Recent content in Series on Sam Briggs [software developer]</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Mon, 13 Apr 2020 18:48:44 +0100</lastBuildDate>
+    
+	<atom:link href="https://sambriggs.dev/series/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>detector-dag</title>
+      <link>https://sambriggs.dev/series/detector-dag/</link>
+      <pubDate>Mon, 13 Apr 2020 18:48:44 +0100</pubDate>
+      
+      <guid>https://sambriggs.dev/series/detector-dag/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

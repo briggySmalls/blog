@@ -3,27 +3,32 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://sambriggs.dev/posts/detectordag/concepts/</loc>
-    <lastmod>2020-04-13T11:41:03+01:00</lastmod>
+    <loc>https://sambriggs.dev/series/detector-dag/</loc>
+    <lastmod>2020-04-13T18:48:44+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sambriggs.dev/tags/detectordag/</loc>
-    <lastmod>2020-04-13T11:41:03+01:00</lastmod>
+    <loc>https://sambriggs.dev/posts/detector-dag/device-choose-your-weapon/</loc>
+    <lastmod>2020-04-13T18:48:44+01:00</lastmod>
   </url>
   
   <url>
     <loc>https://sambriggs.dev/posts/</loc>
+    <lastmod>2020-04-13T18:48:44+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sambriggs.dev/series/</loc>
+    <lastmod>2020-04-13T18:48:44+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sambriggs.dev/posts/detector-dag/concepts/</loc>
     <lastmod>2020-04-13T11:41:03+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sambriggs.dev/tags/</loc>
-    <lastmod>2020-04-13T11:41:03+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://sambriggs.dev/posts/detectordag/introduction/</loc>
+    <loc>https://sambriggs.dev/posts/detector-dag/introduction/</loc>
     <lastmod>2020-04-13T10:33:44+01:00</lastmod>
   </url>
   
@@ -34,6 +39,11 @@
   
   <url>
     <loc>https://sambriggs.dev/posts/circleci-workspaces/</loc>
+    <lastmod>2020-02-09T23:30:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sambriggs.dev/tags/</loc>
     <lastmod>2020-02-09T23:30:00+00:00</lastmod>
   </url>
   
@@ -60,10 +70,6 @@
   <url>
     <loc>https://sambriggs.dev/tags/web/</loc>
     <lastmod>2020-02-03T14:59:18+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://sambriggs.dev/categories/</loc>
   </url>
   
 </urlset>
