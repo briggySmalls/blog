@@ -3,9 +3,14 @@
 package main
 
 import (
+	"fmt"
 	"github.com/magefile/mage/mg"
 	"github.com/magefile/mage/sh"
 	"github.com/magefile/mage/target"
+	"io"
+	"io/ioutil"
+	"os/exec"
+	"path/filepath"
 )
 
 var sourceDirs = []string{
@@ -44,4 +49,39 @@ func Proof() error {
 	mg.Deps(Build)
 	// Proofread the generated HTML
 	return sh.Run("htmlproofer", "./public", "--allow-hash-href", "--check-html")
+}
+
+func SpellCheck() error {
+	// We require the build output for linting html
+	mg.Deps(Build)
+	// Proofread the generated HTML
+	matches, err := filepath.Glob("./public/**/*.html")
+	if err != nil {
+		return err
+	}
+	for _, match := range matches {
+		// Read the file contents
+		contents, err := ioutil.ReadFile(match)
+		if err != nil {
+			return err
+		}
+		// Pipe the file into aspell
+		cmd := exec.Command("aspell", "--mode=html", "list")
+		stdin, err := cmd.StdinPipe()
+		if err != nil {
+			return err
+		}
+		// Pipe the file into stdin
+		go func() {
+			defer stdin.Close()
+			io.WriteString(stdin, string(contents))
+		}()
+		// Run the command
+		out, err := cmd.Output()
+		if err != nil {
+			return err
+		}
+		fmt.Printf(string(out))
+	}
+	return nil
 }
