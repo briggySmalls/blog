@@ -6,10 +6,37 @@
     <description>Recent content in Tags on Sam Briggs [software developer]</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
-    <lastBuildDate>Tue, 14 Apr 2020 21:35:06 +0100</lastBuildDate>
+    <lastBuildDate>Thu, 16 Apr 2020 22:20:05 +0100</lastBuildDate>
     
 	<atom:link href="https://sambriggs.dev/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>configuration</title>
+      <link>https://sambriggs.dev/tags/configuration/</link>
+      <pubDate>Thu, 16 Apr 2020 22:20:05 +0100</pubDate>
+      
+      <guid>https://sambriggs.dev/tags/configuration/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>environs</title>
+      <link>https://sambriggs.dev/tags/environs/</link>
+      <pubDate>Thu, 16 Apr 2020 22:20:05 +0100</pubDate>
+      
+      <guid>https://sambriggs.dev/tags/environs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>python</title>
+      <link>https://sambriggs.dev/tags/python/</link>
+      <pubDate>Thu, 16 Apr 2020 22:20:05 +0100</pubDate>
+      
+      <guid>https://sambriggs.dev/tags/python/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>github-pages</title>

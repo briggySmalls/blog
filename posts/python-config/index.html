@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+
+<meta name="description" content="The software blog of Sam Briggs, just another nerd.">
+<title>
+    Python Config - Sam Briggs [software developer]
+</title>
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.min.4321edce0de245f4b1d32680d89ac669940fe5dec17e1791c721d9a0954987b4.css" integrity="sha256-QyHtzg3iRfSx0yaA2JrGaZQP5d7BfheRxyHZoJVJh7Q=" crossorigin="anonymous" media="screen">
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Didact+Gothic">
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Python Config"/>
+<meta name="twitter:description" content="My desire Application configuration, one of the 12 tenets of the 12 factor app  1. Such a reoccurring and important need that it deserves a reusable elegant solution. This blog post assumes you&rsquo;ve already drunk the Kool-Aid. If not perhaps follow the link before proceeding, they&rsquo;ll do a better job than I in convincing you.
+From my recent development in Go, I&rsquo;ve become familiar with cobra  and its close relative viper  ."/>
+
+<meta property="og:title" content="Python Config" />
+<meta property="og:description" content="My desire Application configuration, one of the 12 tenets of the 12 factor app  1. Such a reoccurring and important need that it deserves a reusable elegant solution. This blog post assumes you&rsquo;ve already drunk the Kool-Aid. If not perhaps follow the link before proceeding, they&rsquo;ll do a better job than I in convincing you.
+From my recent development in Go, I&rsquo;ve become familiar with cobra  and its close relative viper  ." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://sambriggs.dev/posts/python-config/" />
+<meta property="article:published_time" content="2020-04-16T22:20:05+01:00" />
+<meta property="article:modified_time" content="2020-04-16T22:20:05+01:00" /><meta property="og:site_name" content="Sam Briggs" />
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-157531859-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+    
+
+    
+    
+    
+    <title>
+        
+        Python Config
+        
+    </title>
+</head>
+
+<body>
+    
+    
+    <header class="wrap flex-container">
+        <h1>Python Config</h1>
+    </header>
+    
+    <main class="wrap">
+        
+<div class="flex-container">
+    
+    <aside role="complementary">
+        16 Apr 2020 &#183; 660 words
+        <div class="tag-container">
+            
+            
+            <span class="tag">
+                <a href="/tags/python/">
+                    python
+                </a>
+            </span>
+            
+            
+            
+            <span class="tag">
+                <a href="/tags/environs/">
+                    environs
+                </a>
+            </span>
+            
+            
+            
+            <span class="tag">
+                <a href="/tags/configuration/">
+                    configuration
+                </a>
+            </span>
+            
+            
+        </div>
+    </aside>
+    <hr />
+    
+    
+    <article role="article">
+        <h2 id="my-desire">My desire</h2>
+<p>Application configuration, one of the 12 tenets of the <a
+  href="https://12factor.net/config"
+  target="_blank" rel="noopener">
+  12 factor app
+</a>
+<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>. Such a
+reoccurring and important need that it deserves a reusable elegant solution. This blog post assumes
+you&rsquo;ve already drunk the Kool-Aid. If not perhaps follow the link before proceeding, they&rsquo;ll do a better
+job than I in convincing you.</p>
+<p>From my recent development in Go, I&rsquo;ve become familiar with <a
+  href="https://github.com/spf13/cobra"
+  target="_blank" rel="noopener">
+  cobra
+</a>
+ and its close relative <a
+  href="https://github.com/spf13/viper"
+  target="_blank" rel="noopener">
+  viper
+</a>
+.
+I think these tools readjusted what I have come to be done &lsquo;for me&rsquo;, and I have less patience when it
+comes to rolling my own configuration from environment variables.</p>
+<p>What do I mean? Well you define a command line application with cobra, including options and arguments.
+Viper allows you to specify these options and arguments in other common ways: via a configuration file,
+<em>or pulling values from environment variables</em>.</p>
+<h2 id="what-about-python">What about Python</h2>
+<p>So enter Python. Let&rsquo;s say you&rsquo;ve been prototyping some sort of client that makes requests:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">## some_sub_module.py</span>
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Client</span>:
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">configure</span>():
+        <span style="color:#75715e"># Some preamble ...</span>
+        self<span style="color:#f92672">.</span>_aws<span style="color:#f92672">.</span>configureEndpoint(<span style="color:#e6db74">&#34;some-account.aws.com&#34;</span>, <span style="color:#ae81ff">8883</span>)
+</code></pre></div><p>You&rsquo;re a good citizen, you recognise that you should use environment variables to configure those parameters.
+So that if you got a new account or, God forbid, anyone else actually wants to use your code.
+You probably reach for:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">## some_sub_module.py</span>
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Client</span>:
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">configure</span>():
+        <span style="color:#75715e"># Some preamble ...</span>
+        self<span style="color:#f92672">.</span>_aws<span style="color:#f92672">.</span>configureEndpoint(
+            os<span style="color:#f92672">.</span>getenv(APP_ENDPOINT, <span style="color:#e6db74">&#34;some-account.aws.com&#34;</span>),
+            os<span style="color:#f92672">.</span>getenv(APP_PORT, <span style="color:#ae81ff">8883</span>))
+</code></pre></div><p>OK, but remember, all environment variables are parsed as <em>strings</em>, urgh:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff">## some_sub_module.py
+class Client:
+    def configure():
+        # Some preamble ...
+        self._aws.configureEndpoint(
+            os.getenv(APP_ENDPOINT, &#34;some-account.aws.com&#34;),
+<span style="color:#f92672">-           os.getenv(APP_PORT, 8883))
+</span><span style="color:#f92672"></span><span style="color:#a6e22e">+           int(os.getenv(APP_PORT, &#34;8883&#34;)))
+</span></code></pre></div><p>Fine, but are you not worried now that parsing <code>APP_PORT</code> as an <code>int</code> might throw an exception if it&rsquo;s
+been set to something silly? Your users may well have done. Sure we love exception flow in Python, but
+are you really going to wrap <code>configure()</code> in a try catch for the generic <code>ValueError</code>?</p>
+<p>And further to that, if you depend on an environment variable to be set who wants to wait for <code>configure()</code>
+to be called to find out that your user hasn&rsquo;t configured the program correctly?</p>
+<p>Frankly the more I think about the problem, the less time I have for it. I want to solve problems, not
+write boilerplate.</p>
+<h2 id="environs-the-hero">Environs, the &lsquo;hero&rsquo;</h2>
+<p>I&rsquo;ll usually create a config class to encapsulate the application configuration:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">## config.py</span>
+<span style="color:#f92672">from</span> dataclasses <span style="color:#f92672">import</span> dataclass
+
+<span style="color:#a6e22e">@dataclass</span>
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Config</span>:
+    endpoint: str
+    port: int
+</code></pre></div><p>Now let&rsquo;s add a way of creating a populated <code>Config</code> object from the environment. Enter <a
+  href="https://github.com/sloria/environs"
+  target="_blank" rel="noopener">
+  environs
+</a>
+,
+a Python package that <strong>isn&rsquo;t</strong> as good as Viper, but hey, anything that allows me to get on with my
+day:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">## config.py</span>
+<span style="color:#f92672">from</span> dataclasses <span style="color:#f92672">import</span> dataclass
+<span style="color:#f92672">from</span> environs <span style="color:#f92672">import</span> Env
+
+<span style="color:#a6e22e">@dataclass</span>
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Config</span>:
+    endpoint: str
+    port: int
+
+    <span style="color:#a6e22e">@classmethod</span>
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">from_env</span>(cls):
+        <span style="color:#e6db74">&#34;&#34;&#34;Parse configuration from environment variables
+</span><span style="color:#e6db74">        Returns:
+</span><span style="color:#e6db74">            Config: Application configuration
+</span><span style="color:#e6db74">        &#34;&#34;&#34;</span>
+        env <span style="color:#f92672">=</span> Env()
+        <span style="color:#75715e"># Read environment variables from .env file (if present)</span>
+        env<span style="color:#f92672">.</span>read_env()
+        <span style="color:#75715e"># Create a new Config from environment variables</span>
+        <span style="color:#66d9ef">return</span> Config(
+            endpoint<span style="color:#f92672">=</span>env<span style="color:#f92672">.</span>str(<span style="color:#e6db74">&#34;APP_ENDPOINT&#34;</span>),
+            port<span style="color:#f92672">=</span>env<span style="color:#f92672">.</span>int(<span style="color:#e6db74">&#34;APP_PORT&#34;</span>))
+</code></pre></div><p>Do you see the magic? I don&rsquo;t have to worry about parsing strings to integers, environs has my back.
+Plus I can use a <a
+  href="https://www.freecodecamp.org/news/nodejs-custom-env-files-in-your-apps-fa7b3e67abe1/"
+  target="_blank" rel="noopener">
+  &lt;code&gt;.env&lt;/code&gt; file
+</a>
+ to specify my environment variables on disk.</p>
+<p>Finally, I just need to create my config as soon as my program starts, and if my users have failed to
+correctly configure the program it will exit immediately. So much better than finding out at the time
+of use!</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> myapp.config <span style="color:#f92672">import</span> Config
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">main</span>():
+    <span style="color:#75715e"># Create the application config</span>
+    config <span style="color:#f92672">=</span> Config<span style="color:#f92672">.</span>from_env()
+    <span style="color:#75715e"># Do the rest</span>
+    <span style="color:#75715e"># ...</span>
+
+<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;__main__&#39;</span>:
+    main()
+</code></pre></div><p>It&rsquo;s worth pointing out, that this sort of approach can make code more testable as well. It&rsquo;s easy to
+create a <code>Config</code> object with mocked values and inject it into whatever unit is under test.</p>
+<p>Right what was I doing again?&hellip;</p>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>It is with great embarrassement that I confess that despite oft-quoting this methodology, I&rsquo;ve
+never read all of it, nor even do I know what all 12 factors <em>are</em>. It&rsquo;s on the to-do list. <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+
+    </article>
+    
+    <hr />
+    <aside>
+        <div>
+            <a href="/posts/no-jekyll/ ">← No Jekyll</a>
+        </div>
+        <div>
+            
+        </div>
+    </aside>
+</div>
+
+
+        
+        
+        <nav role="navigation" class="flex-container bottom-menu">
+            
+<hr />
+<p>
+
+
+    
+
+    
+        
+            <a href="/about">about</a>
+        
+    
+    
+        
+            &#183; 
+            <a href="/posts">posts</a>
+        
+            &#183; 
+            <a href="https://github.com/briggySmalls">github</a>
+        
+    
+    &#183; 
+    <a href="/">
+        home
+    </a>
+
+</p>
+        </nav>
+        
+        
+    </main>
+    
+    <footer class="flex-container footer">The software blog of Sam Briggs, just another nerd.</footer>
+    
+    
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>environs on Sam Briggs [software developer]</title>
+    <link>https://sambriggs.dev/tags/environs/</link>
+    <description>Recent content in environs on Sam Briggs [software developer]</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Thu, 16 Apr 2020 22:20:05 +0100</lastBuildDate>
+    
+	<atom:link href="https://sambriggs.dev/tags/environs/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Python Config</title>
+      <link>https://sambriggs.dev/posts/python-config/</link>
+      <pubDate>Thu, 16 Apr 2020 22:20:05 +0100</pubDate>
+      
+      <guid>https://sambriggs.dev/posts/python-config/</guid>
+      <description>My desire Application configuration, one of the 12 tenets of the 12 factor app  1. Such a reoccurring and important need that it deserves a reusable elegant solution. This blog post assumes you&amp;rsquo;ve already drunk the Kool-Aid. If not perhaps follow the link before proceeding, they&amp;rsquo;ll do a better job than I in convincing you.
+From my recent development in Go, I&amp;rsquo;ve become familiar with cobra  and its close relative viper  .</description>
+    </item>
+    
+  </channel>
+</rss>
