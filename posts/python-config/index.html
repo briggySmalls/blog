@@ -34,11 +34,11 @@
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Python Config"/>
-<meta name="twitter:description" content="My desire Application configuration, one of the 12 tenets of the 12 factor app  1. Such a reoccurring and important need that it deserves a reusable elegant solution. This blog post assumes you&rsquo;ve already drunk the Kool-Aid. If not perhaps follow the link before proceeding, they&rsquo;ll do a better job than I in convincing you.
+<meta name="twitter:description" content="My desire Application configuration, one of the tenets of the 12 factor app  1. Such a reoccurring and important need that it deserves a reusable elegant solution. This blog post assumes you&rsquo;ve already drunk the Kool-Aid. If not perhaps follow the link before proceeding, they&rsquo;ll do a better job than I in convincing you.
 From my recent development in Go, I&rsquo;ve become familiar with cobra  and its close relative viper  ."/>
 
 <meta property="og:title" content="Python Config" />
-<meta property="og:description" content="My desire Application configuration, one of the 12 tenets of the 12 factor app  1. Such a reoccurring and important need that it deserves a reusable elegant solution. This blog post assumes you&rsquo;ve already drunk the Kool-Aid. If not perhaps follow the link before proceeding, they&rsquo;ll do a better job than I in convincing you.
+<meta property="og:description" content="My desire Application configuration, one of the tenets of the 12 factor app  1. Such a reoccurring and important need that it deserves a reusable elegant solution. This blog post assumes you&rsquo;ve already drunk the Kool-Aid. If not perhaps follow the link before proceeding, they&rsquo;ll do a better job than I in convincing you.
 From my recent development in Go, I&rsquo;ve become familiar with cobra  and its close relative viper  ." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://sambriggs.dev/posts/python-config/" />
@@ -115,7 +115,7 @@ if (!doNotTrack) {
     
     <article role="article">
         <h2 id="my-desire">My desire</h2>
-<p>Application configuration, one of the 12 tenets of the <a
+<p>Application configuration, one of the tenets of the <a
   href="https://12factor.net/config"
   target="_blank" rel="noopener">
   12 factor app
@@ -146,7 +146,9 @@ Viper allows you to specify these options and arguments in other common ways: vi
 <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Client</span>:
     <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">configure</span>():
         <span style="color:#75715e"># Some preamble ...</span>
-        self<span style="color:#f92672">.</span>_aws<span style="color:#f92672">.</span>configureEndpoint(<span style="color:#e6db74">&#34;some-account.aws.com&#34;</span>, <span style="color:#ae81ff">8883</span>)
+        self<span style="color:#f92672">.</span>_aws<span style="color:#f92672">.</span>configureEndpoint(
+            <span style="color:#e6db74">&#34;some-account.aws.com&#34;</span>,
+            <span style="color:#ae81ff">8883</span>)
 </code></pre></div><p>You&rsquo;re a good citizen, you recognise that you should use environment variables to configure those parameters.
 So that if you got a new account or, God forbid, anyone else actually wants to use your code.
 You probably reach for:</p>
