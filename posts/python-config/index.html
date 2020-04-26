@@ -29,6 +29,7 @@
 
 
 
+<link rel="stylesheet" href="/css/custom.css" integrity="" crossorigin="anonymous" media="screen">
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Didact+Gothic">
 
@@ -116,15 +117,15 @@ if (!doNotTrack) {
     <article role="article">
         <h2 id="my-desire">My desire</h2>
 <p>Application configuration, one of the tenets of the <a href="https://12factor.net/config"
-    target="_blank">12 factor app</a>
+    rel="nofollow external">12 factor app</a>
 <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>. Such a
 reoccurring and important need that it deserves a reusable elegant solution. This blog post assumes
 you&rsquo;ve already drunk the Kool-Aid. If not perhaps follow the link before proceeding, they&rsquo;ll do a better
 job than I in convincing you.</p>
 <p>From my recent development in Go, I&rsquo;ve become familiar with <a href="https://github.com/spf13/cobra"
-    target="_blank">cobra</a>
+    rel="nofollow external">cobra</a>
  and its close relative <a href="https://github.com/spf13/viper"
-    target="_blank">viper</a>
+    rel="nofollow external">viper</a>
 .
 I think these tools readjusted what I have come to be done &lsquo;for me&rsquo;, and I have less patience when it
 comes to rolling my own configuration from environment variables.</p>
@@ -176,7 +177,7 @@ write boilerplate.</p>
     endpoint: str
     port: int
 </code></pre></div><p>Now let&rsquo;s add a way of creating a populated <code>Config</code> object from the environment. Enter <a href="https://github.com/sloria/environs"
-    target="_blank">environs</a>
+    rel="nofollow external">environs</a>
 ,
 a Python package that <strong>isn&rsquo;t</strong> as good as Viper, but hey, anything that allows me to get on with my
 day:</p>
@@ -204,7 +205,7 @@ day:</p>
             port<span style="color:#f92672">=</span>env<span style="color:#f92672">.</span>int(<span style="color:#e6db74">&#34;APP_PORT&#34;</span>))
 </code></pre></div><p>Do you see the magic? I don&rsquo;t have to worry about parsing strings to integers, environs has my back.
 Plus I can use a <a href="https://www.freecodecamp.org/news/nodejs-custom-env-files-in-your-apps-fa7b3e67abe1/"
-    target="_blank"><code>.env</code> file</a>
+    rel="nofollow external"><code>.env</code> file</a>
  to specify my environment variables on disk.</p>
 <p>Finally, I just need to create my config as soon as my program starts, and if my users have failed to
 correctly configure the program it will exit immediately. So much better than finding out at the time

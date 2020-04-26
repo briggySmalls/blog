@@ -29,6 +29,7 @@
 
 
 
+<link rel="stylesheet" href="/css/custom.css" integrity="" crossorigin="anonymous" media="screen">
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Didact+Gothic">
 
@@ -112,12 +113,12 @@ to the image source URLs was giving me the big fat 404 on GitHub pages:</p>
 <p>For sanity, I checked out the deploy branch, <code>gh-pages</code>, and sure enough my diagrams were present,
 nestled in a folder called <code>_gen</code>.</p>
 <p>I was immediately suspecious about the leading underscore, and a <a href="https://github.community/t5/GitHub-Pages/Cannot-access-underscore-folder-file-with-nojekyll/td-p/36087"
-    target="_blank">quick search</a>
+    rel="nofollow external">quick search</a>
  of
 &ldquo;github pages underscore&rdquo; reminded me that GitHub processes deployments with Jekyll unless instructed
 not to. And what does Jekyll do? Removes files with a leading underscore. The smoking gun!</p>
 <p>Straightforward stuff, I thought. I&rsquo;ve been here before, just whack a <a href="https://github.blog/2009-12-29-bypassing-jekyll-on-github-pages/"
-    target="_blank">.nojekyll file</a>
+    rel="nofollow external">.nojekyll file</a>
  in
 the root of the pages branch. So I updated my CircleCI deploy job:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff"><span style="color:#a6e22e">+ - run:

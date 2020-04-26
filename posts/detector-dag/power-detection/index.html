@@ -29,6 +29,7 @@
 
 
 
+<link rel="stylesheet" href="/css/custom.css" integrity="" crossorigin="anonymous" media="screen">
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Didact+Gothic">
 
@@ -111,7 +112,7 @@ if (!doNotTrack) {
     
     <article role="article">
         <p>I connected a Raspberry Pi to the <a href="https://www.aliexpress.com/item/32954180664.html"
-    target="_blank">UPSLite</a>
+    rel="nofollow external">UPSLite</a>
  that I&rsquo;d
 identified in the <a href="/posts/detector-dag/concepts/">concepts</a>
  blog post. Right out of the box I could switch
@@ -126,12 +127,12 @@ from the manufacturer that indicated I could detect this on the Pi&rsquo;s GPIO7
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 <p>I selected the higher-level <a href="https://gpiozero.readthedocs.io/en/stable/#"
-    target="_blank">gpiozero</a>
+    rel="nofollow external">gpiozero</a>
  python library over <a href="https://sourceforge.net/projects/raspberry-gpio-python/"
-    target="_blank">RPi.GPIO</a>
+    rel="nofollow external">RPi.GPIO</a>
 . It appears to be the
 <a href="https://www.raspberrypi.org/documentation/usage/gpio/python/README.md"
-    target="_blank">recommended library</a>
+    rel="nofollow external">recommended library</a>
  these days, and critically for me, it has a simple edge detection
 API. This allowed me to declaritively assign callbacks to be executed when an input pin changes
 value - tidy.</p>
@@ -145,11 +146,11 @@ power_status_input<span style="color:#f92672">.</span>when_deactivated <span sty
 <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">_publish_update</span>(self, device: DigitalInputDevice) <span style="color:#f92672">-&gt;</span> None:
     <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Status changed!&#34;</span>)
 </code></pre></div><p>I tore my hair out trying to get that pin detection to work. I found the manufacturer&rsquo;s <a href="https://github.com/linshuqin329/UPS-Lite"
-    target="_blank">GitHub repo</a>
+    rel="nofollow external">GitHub repo</a>
 ,
 but the example code demonstrated reading the voltage/capacity of the battery, not the power status.</p>
 <p>I double-checked the <a href="https://pinout.xyz/#"
-    target="_blank">pin numbering system</a>
+    rel="nofollow external">pin numbering system</a>
 , and confirmed it <em>had</em> to be pin BCM4/WiringPi7, not least
 because I could <em>see</em> BCM7 wasn&rsquo;t connected to by a pogo pin.</p>
 <p>I manually read the pin a few times and whilst knocking it about found the voltage seemed to be floating:
@@ -158,7 +159,7 @@ it.</p>
 <p>I studied the owners manual, written in Chinese, pouring over the same wiring schematic I&rsquo;d found in
 the tweet: everything looked kosher.</p>
 <p>Finally, I found a <a href="https://github.com/linshuqin329/UPS-Lite/issues/1"
-    target="_blank">translated manual</a>
+    rel="nofollow external">translated manual</a>
  that revealed my error:</p>
 <blockquote>
 <p>Also UPS-Lite insertion detecting function with a power adapter, the insertion of the power pi io4

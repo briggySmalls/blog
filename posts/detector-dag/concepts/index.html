@@ -29,6 +29,7 @@
 
 
 
+<link rel="stylesheet" href="/css/custom.css" integrity="" crossorigin="anonymous" media="screen">
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Didact+Gothic">
 
@@ -106,7 +107,7 @@ if (!doNotTrack) {
 <p>All of my concepts revolved around a few assumptions:</p>
 <ul>
 <li>A device would be a cheap <a href="https://www.raspberrypi.org/products/raspberry-pi-zero/"
-    target="_blank">Raspberry Pi Zero</a>
+    rel="nofollow external">Raspberry Pi Zero</a>
 </li>
 <li>There would be a server that could receive staus updates from multiple devices</li>
 <li>The server would email users in the case of a power failure</li>
@@ -130,7 +131,7 @@ if (!doNotTrack) {
 I could envisage false positives in cases where the internet failed, or the Pi&rsquo;s WiFi connection failed.</li>
 <li>I didn&rsquo;t relish the prospect of getting non-technical users to connect Pi Zero&rsquo;s to their home network.
 It would likely require a setup step where the Pi presents itself as an <a href="https://iot.stackexchange.com/a/658"
-    target="_blank">access point</a>
+    rel="nofollow external">access point</a>
 .
 Then would it need a reset button? Urgh.</li>
 </ul>
@@ -139,7 +140,7 @@ Then would it need a reset button? Urgh.</li>
 receiving &ldquo;I&rsquo;m alive&rdquo;. However this required the Pi to remain powered during a powercut - at least long
 enough to send the message.</p>
 <p>I found the <a href="https://www.aliexpress.com/item/32954180664.html"
-    target="_blank">UPSLite</a>
+    rel="nofollow external">UPSLite</a>
 ,
 a reasonably-priced, uninterruptable power supply shield designed for the Pi Zero.
 It includes a digital signal connected to a GPIO pin that indicates power status, as well as extra
@@ -151,7 +152,7 @@ features such as allowing the Pi to interrogate battery capacity/voltage.</p>
 
 <p>Ok, so now the Pi can send a &ldquo;power lost&rdquo; message. But if there&rsquo;s been a power cut the router is probably
 down too! Fine, lets throw in a <a href="https://www.amazon.co.uk/gp/product/B075QZQSS1"
-    target="_blank">small UPS</a>
+    rel="nofollow external">small UPS</a>
  for the
 router too.</p>
 <figure>
@@ -171,7 +172,7 @@ router too.</p>
 Initial research suggested it <em>would</em>
 (internet providers would probably have their own generators).
 However my use case was <a href="https://en.wikipedia.org/wiki/Alderney"
-    target="_blank">Alderney</a>
+    rel="nofollow external">Alderney</a>
 
 where normal assumptions about infrastructure may not hold true&hellip;</li>
 <li>The system still depends on a WiFi connection between the Pis and the router.

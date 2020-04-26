@@ -1,0 +1,8 @@
+/* Style external links specially */
+a[rel~="external"]:after {
+    content: '⬈';
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+    margin-left: 1px;
+}
