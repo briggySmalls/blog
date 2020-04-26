@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+
+<meta name="description" content="The software blog of Sam Briggs, just another nerd.">
+<title>
+    AWS IoT - Pi in the sky - Sam Briggs [software developer]
+</title>
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.min.4321edce0de245f4b1d32680d89ac669940fe5dec17e1791c721d9a0954987b4.css" integrity="sha256-QyHtzg3iRfSx0yaA2JrGaZQP5d7BfheRxyHZoJVJh7Q=" crossorigin="anonymous" media="screen">
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Didact+Gothic">
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="AWS IoT - Pi in the sky"/>
+<meta name="twitter:description" content="Introduction With a high-level plan sketched out and a power detecting Raspberry Pi  at my disposal it was time to stay up late and start tapping!
+As someone who&rsquo;s trying to reposition themselves as a &lsquo;backend developer&rsquo;, I knew I wanted to become familiar with Amazon Web Services (AWS). It might not be the answer to every solution, but it certainly felt like something that should be in my toolkit."/>
+
+<meta property="og:title" content="AWS IoT - Pi in the sky" />
+<meta property="og:description" content="Introduction With a high-level plan sketched out and a power detecting Raspberry Pi  at my disposal it was time to stay up late and start tapping!
+As someone who&rsquo;s trying to reposition themselves as a &lsquo;backend developer&rsquo;, I knew I wanted to become familiar with Amazon Web Services (AWS). It might not be the answer to every solution, but it certainly felt like something that should be in my toolkit." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://sambriggs.dev/posts/detector-dag/aws-iot/" />
+<meta property="article:published_time" content="2020-04-16T22:08:03+01:00" />
+<meta property="article:modified_time" content="2020-04-16T22:08:03+01:00" /><meta property="og:site_name" content="Sam Briggs" /><meta property="og:see_also" content="https://sambriggs.dev/posts/detector-dag/introduction/" /><meta property="og:see_also" content="https://sambriggs.dev/posts/detector-dag/concepts/" /><meta property="og:see_also" content="https://sambriggs.dev/posts/detector-dag/power-detection/" />
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-157531859-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+    
+
+    
+    
+    
+    <title>
+        
+        AWS IoT - Pi in the sky
+        
+    </title>
+</head>
+
+<body>
+    
+    
+    <header class="wrap flex-container">
+        <h1>AWS IoT - Pi in the sky</h1>
+    </header>
+    
+    <main class="wrap">
+        
+<div class="flex-container">
+    
+    <aside role="complementary">
+        16 Apr 2020 &#183; 985 words
+        <div class="tag-container">
+            
+            
+            <span class="tag">
+                <a href="/tags/blog/">
+                    blog
+                </a>
+            </span>
+            
+            
+            
+            <span class="tag">
+                <a href="/tags/story/">
+                    story
+                </a>
+            </span>
+            
+            
+        </div>
+    </aside>
+    <hr />
+    
+    
+    <aside role="complementary">
+        <div>
+            Hey! This post is part of the
+            <a href='/series/detector-dag/'>
+                detector-dag
+            </a> series.
+            If this post is missing some context you could head there to get caught up.
+        </div>
+    </aside>
+    <hr />
+    
+    <article role="article">
+        <h2 id="introduction">Introduction</h2>
+<p>With a high-level plan sketched out and a
+<a
+    href="/posts/detector-dag/power-detection/">
+    power detecting Raspberry Pi
+</a>
+
+at my disposal it was time to stay up late and start tapping!</p>
+<p>As someone who&rsquo;s trying to reposition themselves as a &lsquo;backend developer&rsquo;, I knew I wanted to
+become familiar with Amazon Web Services (AWS). It might not be the answer to every solution, but it
+certainly felt like something that should be in my toolkit.</p>
+<p>Also, coming from an embedded background, I wasn&rsquo;t fussed about making a bells-and-whistles device.
+I was in this for the cloud architecture lessons, so I wanted to get this end of the project done quickly
+and simply.</p>
+<h2 id="aws-iot">AWS IoT</h2>
+<p><a
+    href="https://aws.amazon.com/iot/"
+    target="_blank">
+    AWS IoT
+</a>
+ is a PaaS offering for getting connected &lsquo;things&rsquo; talking to
+the cloud (specifically, <em>Amazon&rsquo;s</em> cloud) using the ubiquitous <a
+    href="https://mqtt.org/"
+    target="_blank">
+    MQTT
+</a>
+ protocol.
+I had initally thought might try out RabbitMQ and the more secure, and feature-rich <a
+    href="https://www.amqp.org/"
+    target="_blank">
+    AMQP
+</a>
+,
+protocol, but this seemed too handy to turn down. Leave some lessons for the future, eh?</p>
+<p>AWS IoT plugs some of the deficiencies of MQTT, such as authentication and encryption using certificates
+and HTTPS which was perfect for me to quickly dabble in a complete networking project.</p>
+<h2 id="python-">&hellip;Python 🤦‍♀️</h2>
+<p>Now, don&rsquo;t get me wrong. Python has its uses. But I&rsquo;ve tried playing with Pi&rsquo;s, Docker, and Python
+before, and the whole ARMv7 architecture thing was a real nightmare. Life isn&rsquo;t as simple as <code>pip install</code>
+when you watch your tiny Pi trying to compile numpy from source<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>.</p>
+<p>Sadly the AWS IoT Device SDK only came in Embedded C, Java, Javascript, and Python flavours. For me
+and my homebrew hack project, Python was the only answer.</p>
+<h2 id="source">Source</h2>
+<p>I kicked off the source as always do, using my <a
+    href="https://github.com/briggySmalls/cookiecutter-pypackage"
+    target="_blank">
+    cookiecutter template
+</a>
+
+to generate a python package with linting, testing, and dependency management ready-to-go.</p>
+<p>Next I found a <a
+    href="https://www.balena.io/blog/use-a-raspberry-pi-to-communicate-with-amazon-aws-iot/"
+    target="_blank">
+    tutorial
+</a>
+ on getting a Rasperry Pi, running BalenaOS sending messages
+to AWS IoT. Which by-and-large went to plan. I smugly handled the parsing of the certificates from environment
+variables using my <a
+    href="/posts/python-config/">
+    config class
+</a>
+ pattern.</p>
+<p>This got me with the equivalent of a &lsquo;hello world&rsquo; IoT device, I could send MQTT messages to AWS IoT
+and see them arrive. Now to actually move to <em>my</em> solution.</p>
+<h2 id="device-shadow">Device shadow</h2>
+<p>I knew I wanted to:</p>
+<ul>
+<li><strong>Associate</strong> one or more device with a single user account</li>
+<li>Post power status updates to the cloud</li>
+<li>Send the account owner an <strong>email</strong> when the power status had changed</li>
+<li>Have some method of &lsquo;checking&rsquo; the <strong>most recent status</strong></li>
+</ul>
+<p>The emphasised parts stood out to me as application &lsquo;state&rsquo;. And when I hear &lsquo;state&rsquo; and I think database.
+I ended up implementing something like this:</p>
+<figure>
+    <img src="/_gen/database.png"
+         alt="database-schema"/> 
+</figure>
+
+<p>However it proved to be a pain maintaining an association between an AWS IoT &lsquo;thing&rsquo; and its corresponding
+<code>device</code> database entry. I made the &lsquo;thing&rsquo; name the same as the device&rsquo;s <code>id</code> but that made creating
+new devices a bit of dance. Anyway, when you think about it, AWS maintatining a &lsquo;thing&rsquo; for me really
+<em>is</em> a database entry of sorts. It all felt a bit redundant.</p>
+<p>Enter the AWS IoT <a
+    href="https://docs.aws.amazon.com/iot/latest/developerguide/iot-device-shadows.html"
+    target="_blank">
+    Device Shadow Service
+</a>
+. This service is designed for &lsquo;telemetry&rsquo; applications like
+mine - you have a device that reports its state to the cloud for other services to use.</p>
+<figure>
+    <img src="/_gen/shadow.png"
+         alt="shadow-schema"/> 
+</figure>
+
+<p>AWS IoT maintains the correspondence between a &lsquo;thing&rsquo; and its shadow for me, relieving me of the issue
+I&rsquo;d faced. The shadow is designed to cache the device&rsquo;s reported state (<code>power-status</code>) along with the
+time it was updated.</p>
+<p>The correspondence between an account and its many devices could have been a blocker, but AWS IoT allows
+you to store &lsquo;attributes&rsquo; on a thing, which I used to store the associated <code>account-id</code></p>
+<h2 id="implementation">Implementation</h2>
+<p>I created a client class for connecting to the device shadow:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> logging
+
+<span style="color:#f92672">from</span> AWSIoTPythonSDK.MQTTLib <span style="color:#f92672">import</span> AWSIoTMQTTShadowClient
+
+_LOGGER <span style="color:#f92672">=</span> logging<span style="color:#f92672">.</span>getLogger(__file__)
+logging<span style="color:#f92672">.</span>getLogger(<span style="color:#e6db74">&#34;AWSIoTPythonSDK&#34;</span>)<span style="color:#f92672">.</span>setLevel(logging<span style="color:#f92672">.</span>WARNING)
+
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CloudClient</span>:
+    <span style="color:#e6db74">&#34;&#34;&#34;Client for interfacing with the cloud&#34;&#34;&#34;</span>
+    _QOS <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+    _DISCONNECT_TIMEOUT <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>
+    _OPERATION_TIMEOUT <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>
+
+    <span style="color:#66d9ef">def</span> __init__(self, config: ClientConfig) <span style="color:#f92672">-&gt;</span> None:
+        self<span style="color:#f92672">.</span>config <span style="color:#f92672">=</span> config
+        <span style="color:#75715e"># Unique ID. If another connection using the same key is opened the</span>
+        <span style="color:#75715e"># previous one is auto closed by AWS IOT</span>
+        self<span style="color:#f92672">.</span>client <span style="color:#f92672">=</span> AWSIoTMQTTShadowClient(config<span style="color:#f92672">.</span>device_id)
+        <span style="color:#75715e"># Used to configure the host name and port number the underneath AWS</span>
+        <span style="color:#75715e"># IoT MQTT Client tries to connect to.</span>
+        self<span style="color:#f92672">.</span>client<span style="color:#f92672">.</span>configureEndpoint(self<span style="color:#f92672">.</span>config<span style="color:#f92672">.</span>endpoint, self<span style="color:#f92672">.</span>config<span style="color:#f92672">.</span>port)
+        <span style="color:#75715e"># Used to configure the rootCA, private key and certificate files.</span>
+        <span style="color:#75715e"># configureCredentials(CAFilePath, KeyPath=&#39;&#39;, CertificatePath=&#39;&#39;)</span>
+        self<span style="color:#f92672">.</span>client<span style="color:#f92672">.</span>configureCredentials(str(self<span style="color:#f92672">.</span>config<span style="color:#f92672">.</span>root_cert<span style="color:#f92672">.</span>resolve()),
+                                         str(self<span style="color:#f92672">.</span>config<span style="color:#f92672">.</span>thing_key<span style="color:#f92672">.</span>resolve()),
+                                         str(self<span style="color:#f92672">.</span>config<span style="color:#f92672">.</span>thing_cert<span style="color:#f92672">.</span>resolve()))
+        <span style="color:#75715e"># Configure connect/disconnect timeout to be 10 seconds</span>
+        self<span style="color:#f92672">.</span>client<span style="color:#f92672">.</span>configureConnectDisconnectTimeout(self<span style="color:#f92672">.</span>_DISCONNECT_TIMEOUT)
+        <span style="color:#75715e"># Configure MQTT operation timeout to be 5 seconds</span>
+        self<span style="color:#f92672">.</span>client<span style="color:#f92672">.</span>configureMQTTOperationTimeout(self<span style="color:#f92672">.</span>_OPERATION_TIMEOUT)
+        <span style="color:#75715e"># Create the shadow handler</span>
+        self<span style="color:#f92672">.</span>shadow <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>client<span style="color:#f92672">.</span>createShadowHandlerWithName(
+            config<span style="color:#f92672">.</span>device_id, False)
+</code></pre></div><p>Then it was just a case of creating a method for sending an update. Note that the <code>DeviceShadowState</code>
+class used here was a simple helper I wrote to convert my boolean status into JSON:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CloudClient</span>:
+    <span style="color:#f92672">...</span>
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">power_status_changed</span>(self, status: bool) <span style="color:#f92672">-&gt;</span> None:
+        <span style="color:#e6db74">&#34;&#34;&#34;Send a messaging indicating the power status has updated
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">        Args:
+</span><span style="color:#e6db74">            status (bool): New power status
+</span><span style="color:#e6db74">        &#34;&#34;&#34;</span>
+        payload <span style="color:#f92672">=</span> DeviceShadowState(status<span style="color:#f92672">=</span>status)<span style="color:#f92672">.</span>to_json()
+        _LOGGER<span style="color:#f92672">.</span>info(<span style="color:#e6db74">&#39;Publishing status update: </span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#39;</span>, payload)
+        token <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>shadow<span style="color:#f92672">.</span>shadowUpdate(payload, self<span style="color:#f92672">.</span>shadow_update_handler,
+                                         self<span style="color:#f92672">.</span>_OPERATION_TIMEOUT)
+        _LOGGER<span style="color:#f92672">.</span>debug(<span style="color:#e6db74">&#34;Status update returned token: </span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#34;</span>, token)
+
+    <span style="color:#a6e22e">@staticmethod</span>
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">shadow_update_handler</span>(payload: str, response_status: str,
+                              token: str) <span style="color:#f92672">-&gt;</span> None:
+        <span style="color:#e6db74">&#34;&#34;&#34;Handle a device shadow update response
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">        Args:
+</span><span style="color:#e6db74">            payload (str): Response body
+</span><span style="color:#e6db74">            response_status (str): Response status
+</span><span style="color:#e6db74">            token (str): Request identifier
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">        Raises:
+</span><span style="color:#e6db74">            RuntimeError: Unexpected response
+</span><span style="color:#e6db74">        &#34;&#34;&#34;</span>
+        <span style="color:#66d9ef">del</span> token
+        <span style="color:#66d9ef">if</span> response_status <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;accepted&#39;</span>:
+            _LOGGER<span style="color:#f92672">.</span>info(<span style="color:#e6db74">&#34;Shadow update accepted: payload=</span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#34;</span>, payload)
+        <span style="color:#66d9ef">elif</span> response_status <span style="color:#f92672">in</span> [<span style="color:#e6db74">&#39;timeout&#39;</span>, <span style="color:#e6db74">&#39;rejected&#39;</span>]:
+            _LOGGER<span style="color:#f92672">.</span>error(<span style="color:#e6db74">&#34;Shadow update failed: status=</span><span style="color:#e6db74">%s</span><span style="color:#e6db74">, payload=</span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#34;</span>,
+                          response_status, payload)
+        <span style="color:#66d9ef">else</span>:
+            <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">RuntimeError</span>(
+                f<span style="color:#e6db74">&#34;Unexpected response_status: {response_status}&#34;</span>)
+
+</code></pre></div><p>You can see the full module in the <a
+    href="https://github.com/briggySmalls/detectordag/blob/26c629400ce043243ee235bd0241eeb69b4bccab/edge/edge/aws.py"
+    target="_blank">
+    GitHub repository
+</a>
+.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>I&rsquo;ve skipped over some detail here, for example my rationle for using docker and BalenaOS for deploying
+my application. I&rsquo;ll be putting out a blog post soon to cover that!</p>
+<p>The message of <em>this</em> blog post is that I now have a device that reports its state into AWS. I could
+now get to work making the magic happen on the world wide web.</p>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>I am aware of <a
+    href="https://www.piwheels.org/"
+    target="_blank">
+    PiWheels
+</a>
+, but the docker images I found can&rsquo;t use them. <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+
+    </article>
+    
+    <hr />
+    <aside>
+        <div>
+            <a href="/posts/no-jekyll/ ">← No Jekyll</a>
+        </div>
+        <div>
+            <a href="/posts/python-config/ ">Python Config →</a>
+        </div>
+    </aside>
+</div>
+
+
+        
+        
+        <nav role="navigation" class="flex-container bottom-menu">
+            
+<hr />
+<p>
+
+
+    
+
+    
+        
+            <a href="/about">about</a>
+        
+    
+    
+        
+            &#183; 
+            <a href="/posts">posts</a>
+        
+            &#183; 
+            <a href="https://github.com/briggySmalls">github</a>
+        
+    
+    &#183; 
+    <a href="/">
+        home
+    </a>
+
+</p>
+        </nav>
+        
+        
+    </main>
+    
+    <footer class="flex-container footer">The software blog of Sam Briggs, just another nerd.</footer>
+    
+    
+</body>
+
+</html>

@@ -3,17 +3,42 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://sambriggs.dev/series/detector-dag/</loc>
+    <lastmod>2020-04-26T12:48:14+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sambriggs.dev/posts/</loc>
+    <lastmod>2020-04-26T12:48:14+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sambriggs.dev/posts/detector-dag/power-detection/</loc>
+    <lastmod>2020-04-26T12:48:14+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sambriggs.dev/tags/raspberry-pi/</loc>
+    <lastmod>2020-04-26T12:48:14+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sambriggs.dev/series/</loc>
+    <lastmod>2020-04-26T12:48:14+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sambriggs.dev/tags/</loc>
+    <lastmod>2020-04-26T12:48:14+01:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://sambriggs.dev/tags/configuration/</loc>
     <lastmod>2020-04-16T22:20:05+01:00</lastmod>
   </url>
   
   <url>
     <loc>https://sambriggs.dev/tags/environs/</loc>
-    <lastmod>2020-04-16T22:20:05+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://sambriggs.dev/posts/</loc>
     <lastmod>2020-04-16T22:20:05+01:00</lastmod>
   </url>
   
@@ -28,8 +53,18 @@
   </url>
   
   <url>
-    <loc>https://sambriggs.dev/tags/</loc>
-    <lastmod>2020-04-16T22:20:05+01:00</lastmod>
+    <loc>https://sambriggs.dev/posts/detector-dag/aws-iot/</loc>
+    <lastmod>2020-04-16T22:08:03+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sambriggs.dev/tags/blog/</loc>
+    <lastmod>2020-04-16T22:08:03+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sambriggs.dev/tags/story/</loc>
+    <lastmod>2020-04-16T22:08:03+01:00</lastmod>
   </url>
   
   <url>
@@ -45,21 +80,6 @@
   <url>
     <loc>https://sambriggs.dev/posts/no-jekyll/</loc>
     <lastmod>2020-04-14T21:35:06+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://sambriggs.dev/series/detector-dag/</loc>
-    <lastmod>2020-04-13T18:48:44+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://sambriggs.dev/posts/detector-dag/device-choose-your-weapon/</loc>
-    <lastmod>2020-04-13T18:48:44+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://sambriggs.dev/series/</loc>
-    <lastmod>2020-04-13T18:48:44+01:00</lastmod>
   </url>
   
   <url>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>raspberry-pi on Sam Briggs [software developer]</title>
+    <link>https://sambriggs.dev/tags/raspberry-pi/</link>
+    <description>Recent content in raspberry-pi on Sam Briggs [software developer]</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Sun, 26 Apr 2020 12:48:14 +0100</lastBuildDate>
+    
+	<atom:link href="https://sambriggs.dev/tags/raspberry-pi/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Power detection</title>
+      <link>https://sambriggs.dev/posts/detector-dag/power-detection/</link>
+      <pubDate>Sun, 26 Apr 2020 12:48:14 +0100</pubDate>
+      
+      <guid>https://sambriggs.dev/posts/detector-dag/power-detection/</guid>
+      <description>I connected a Raspberry Pi to the UPSLite  that I&amp;rsquo;d identified in the concepts  blog post. Right out of the box I could switch off power and the Pi would stay alive!
+I moved on to detecting the power state changes with the Pi: I wanted to send MMQT messages with my AWS IoT client  when these events occurred.
+Documentation on the UPSLite was thin on the ground, but I&amp;rsquo;d found a tweet from the manufacturer that indicated I could detect this on the Pi&amp;rsquo;s GPIO7:</description>
+    </item>
+    
+  </channel>
+</rss>

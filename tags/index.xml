@@ -6,10 +6,19 @@
     <description>Recent content in Tags on Sam Briggs [software developer]</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
-    <lastBuildDate>Thu, 16 Apr 2020 22:20:05 +0100</lastBuildDate>
+    <lastBuildDate>Sun, 26 Apr 2020 12:48:14 +0100</lastBuildDate>
     
 	<atom:link href="https://sambriggs.dev/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>raspberry-pi</title>
+      <link>https://sambriggs.dev/tags/raspberry-pi/</link>
+      <pubDate>Sun, 26 Apr 2020 12:48:14 +0100</pubDate>
+      
+      <guid>https://sambriggs.dev/tags/raspberry-pi/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>configuration</title>
@@ -35,6 +44,24 @@
       <pubDate>Thu, 16 Apr 2020 22:20:05 +0100</pubDate>
       
       <guid>https://sambriggs.dev/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>blog</title>
+      <link>https://sambriggs.dev/tags/blog/</link>
+      <pubDate>Thu, 16 Apr 2020 22:08:03 +0100</pubDate>
+      
+      <guid>https://sambriggs.dev/tags/blog/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>story</title>
+      <link>https://sambriggs.dev/tags/story/</link>
+      <pubDate>Thu, 16 Apr 2020 22:08:03 +0100</pubDate>
+      
+      <guid>https://sambriggs.dev/tags/story/</guid>
       <description></description>
     </item>
     

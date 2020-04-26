@@ -45,7 +45,7 @@ All of my concepts revolved around a few assumptions:
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://sambriggs.dev/posts/detector-dag/concepts/" />
 <meta property="article:published_time" content="2020-04-13T11:41:03+01:00" />
-<meta property="article:modified_time" content="2020-04-13T11:41:03+01:00" /><meta property="og:site_name" content="Sam Briggs" /><meta property="og:see_also" content="https://sambriggs.dev/posts/detector-dag/introduction/" /><meta property="og:see_also" content="https://sambriggs.dev/posts/detector-dag/device-choose-your-weapon/" />
+<meta property="article:modified_time" content="2020-04-13T11:41:03+01:00" /><meta property="og:site_name" content="Sam Briggs" /><meta property="og:see_also" content="https://sambriggs.dev/posts/detector-dag/introduction/" /><meta property="og:see_also" content="https://sambriggs.dev/posts/detector-dag/power-detection/" /><meta property="og:see_also" content="https://sambriggs.dev/posts/detector-dag/aws-iot/" />
 
 
 
@@ -108,9 +108,9 @@ if (!doNotTrack) {
 <p>All of my concepts revolved around a few assumptions:</p>
 <ul>
 <li>A device would be a cheap <a
-  href="https://www.raspberrypi.org/products/raspberry-pi-zero/"
-  target="_blank" rel="noopener">
-  Raspberry Pi Zero
+    href="https://www.raspberrypi.org/products/raspberry-pi-zero/"
+    target="_blank">
+    Raspberry Pi Zero
 </a>
 </li>
 <li>There would be a server that could receive staus updates from multiple devices</li>
@@ -119,7 +119,7 @@ if (!doNotTrack) {
 <h2 id="iteration-1-im-alive">Iteration 1: I&rsquo;m alive</h2>
 <p>My initial ideas revolved around connecting the Raspberry Pi to the house&rsquo;s WiFi network:</p>
 <figure>
-    <img src="/_gen/archie/im-alive-context-device.png"
+    <img src="/_gen/im-alive-context-device.png"
          alt="iteration-1"/> 
 </figure>
 
@@ -135,9 +135,9 @@ if (!doNotTrack) {
 I could envisage false positives in cases where the internet failed, or the Pi&rsquo;s WiFi connection failed.</li>
 <li>I didn&rsquo;t relish the prospect of getting non-technical users to connect Pi Zero&rsquo;s to their home network.
 It would likely require a setup step where the Pi presents itself as an <a
-  href="https://iot.stackexchange.com/a/658"
-  target="_blank" rel="noopener">
-  access point
+    href="https://iot.stackexchange.com/a/658"
+    target="_blank">
+    access point
 </a>
 .
 Then would it need a reset button? Urgh.</li>
@@ -147,29 +147,29 @@ Then would it need a reset button? Urgh.</li>
 receiving &ldquo;I&rsquo;m alive&rdquo;. However this required the Pi to remain powered during a powercut - at least long
 enough to send the message.</p>
 <p>I found the <a
-  href="https://www.aliexpress.com/item/32954180664.html"
-  target="_blank" rel="noopener">
-  UPSLite
+    href="https://www.aliexpress.com/item/32954180664.html"
+    target="_blank">
+    UPSLite
 </a>
 ,
 a reasonably-priced, uninterruptable power supply shield designed for the Pi Zero.
 It includes a digital signal connected to a GPIO pin that indicates power status, as well as extra
 features such as allowing the Pi to interrogate battery capacity/voltage.</p>
 <figure>
-    <img src="/_gen/archie/im-dead-context-device.png"
+    <img src="/_gen/im-dead-context-device.png"
          alt="iteration-2-device"/> 
 </figure>
 
 <p>Ok, so now the Pi can send a &ldquo;power lost&rdquo; message. But if there&rsquo;s been a power cut the router is probably
 down too! Fine, lets throw in a <a
-  href="https://www.amazon.co.uk/gp/product/B075QZQSS1"
-  target="_blank" rel="noopener">
-  small UPS
+    href="https://www.amazon.co.uk/gp/product/B075QZQSS1"
+    target="_blank">
+    small UPS
 </a>
  for the
 router too.</p>
 <figure>
-    <img src="/_gen/archie/im-dead-context.png"
+    <img src="/_gen/im-dead-context.png"
          alt="iteration-1"/> 
 </figure>
 
@@ -185,9 +185,9 @@ router too.</p>
 Initial research suggested it <em>would</em>
 (internet providers would probably have their own generators).
 However my use case was <a
-  href="https://en.wikipedia.org/wiki/Alderney"
-  target="_blank" rel="noopener">
-  Alderney
+    href="https://en.wikipedia.org/wiki/Alderney"
+    target="_blank">
+    Alderney
 </a>
 
 where normal assumptions about infrastructure may not hold true&hellip;</li>
@@ -197,14 +197,14 @@ and relying that they&rsquo;d be connected for these rare, important events.</li
 </ul>
 <h2 id="iteration-3-im-independent">Iteration 3: I&rsquo;m independent</h2>
 <p>This iteration isn&rsquo;t so clever. If you&rsquo;ve read the <a
-  href="/posts/detector-dag/introduction/">
-  Introduction
+    href="/posts/detector-dag/introduction/">
+    Introduction
 </a>
 
 you&rsquo;ll realise that I&rsquo;ve just reinvented the products discussed there for a bit less money.</p>
 <p>Well, those guys are running a business on this model, maybe they know what they&rsquo;re doing?</p>
 <figure>
-    <img src="/_gen/archie/independent-context-device.png"
+    <img src="/_gen/independent-context-device.png"
          alt="iteration-3"/> 
 </figure>
 
@@ -233,7 +233,7 @@ So take everything here with a few grains of salt, life tastes better that way&h
             <a href="/posts/detector-dag/introduction/ ">← Introduction</a>
         </div>
         <div>
-            <a href="/posts/detector-dag/device-choose-your-weapon/ ">Device - Choose your weapon(s) →</a>
+            <a href="/posts/no-jekyll/ ">No Jekyll →</a>
         </div>
     </aside>
 </div>
