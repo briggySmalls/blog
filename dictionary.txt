@@ -1,0 +1,26 @@
+personal_ws-1.1 en 26 
+CircleCI
+HTMLProofer
+IoT
+JAMstack
+Kool
+MMQT
+Netlify
+PostCSS
+config
+github
+gpiozero
+homebrew
+hugo
+netlify
+nojekyll
+npm
+pogo
+repo
+serverless
+stackshare
+submodules
+swappable
+urgh
+webapp
+workspaces
