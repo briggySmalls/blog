@@ -17,8 +17,8 @@
       <pubDate>Sun, 26 Apr 2020 12:48:14 +0100</pubDate>
       
       <guid>https://sambriggs.dev/posts/detector-dag/power-detection/</guid>
-      <description>I connected a Raspberry Pi to the UPSLite  that I&amp;rsquo;d identified in the concepts  blog post. Right out of the box I could switch off power and the Pi would stay alive!
-I moved on to detecting the power state changes with the Pi: I wanted to send MMQT messages with my AWS IoT client  when these events occurred.
+      <description>I connected a Raspberry Pi to the UPSLite that I&amp;rsquo;d identified in the concepts blog post. Right out of the box I could switch off power and the Pi would stay alive!
+I moved on to detecting the power state changes with the Pi: I wanted to send MMQT messages with my AWS IoT client when these events occurred.
 Documentation on the UPSLite was thin on the ground, but I&amp;rsquo;d found a tweet from the manufacturer that indicated I could detect this on the Pi&amp;rsquo;s GPIO7:</description>
     </item>
     
@@ -28,7 +28,7 @@ Documentation on the UPSLite was thin on the ground, but I&amp;rsquo;d found a t
       <pubDate>Thu, 16 Apr 2020 22:08:03 +0100</pubDate>
       
       <guid>https://sambriggs.dev/posts/detector-dag/aws-iot/</guid>
-      <description>Introduction With a high-level plan sketched out and a power detecting Raspberry Pi  at my disposal it was time to stay up late and start tapping!
+      <description>Introduction With a high-level plan sketched out and a power detecting Raspberry Pi at my disposal it was time to stay up late and start tapping!
 As someone who&amp;rsquo;s trying to reposition themselves as a &amp;lsquo;backend developer&amp;rsquo;, I knew I wanted to become familiar with Amazon Web Services (AWS). It might not be the answer to every solution, but it certainly felt like something that should be in my toolkit.</description>
     </item>
     
@@ -40,7 +40,7 @@ As someone who&amp;rsquo;s trying to reposition themselves as a &amp;lsquo;backe
       <guid>https://sambriggs.dev/posts/detector-dag/concepts/</guid>
       <description>I set to work designing a system for monitoring power remotely, and came up with a few iterations.
 All of my concepts revolved around a few assumptions:
- A device would be a cheap Raspberry Pi Zero   There would be a server that could receive staus updates from multiple devices The server would email users in the case of a power failure  Iteration 1: I&amp;rsquo;m alive My initial ideas revolved around connecting the Raspberry Pi to the house&amp;rsquo;s WiFi network:</description>
+ A device would be a cheap Raspberry Pi Zero  There would be a server that could receive staus updates from multiple devices The server would email users in the case of a power failure  Iteration 1: I&amp;rsquo;m alive My initial ideas revolved around connecting the Raspberry Pi to the house&amp;rsquo;s WiFi network:</description>
     </item>
     
     <item>

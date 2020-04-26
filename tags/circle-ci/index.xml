@@ -17,7 +17,7 @@
       <pubDate>Sun, 09 Feb 2020 23:30:00 +0000</pubDate>
       
       <guid>https://sambriggs.dev/posts/circleci-workspaces/</guid>
-      <description>The problem When I created my CircleCI pipeline in my first post  I came unstuck passing the built site from one job to another as a workspace.
+      <description>The problem When I created my CircleCI pipeline in my first post I came unstuck passing the built site from one job to another as a workspace.
 This manifested in two ways, where I&amp;rsquo;d made the same mistake in two different jobs.
 Deployment issues The deploy job appeared to work correctly, but when I navigated to the site I was greeted with a 404 error:
 HTML-proofer internal link checks And when I ran the htmlproofer tool on my generated site I was greeted with a slew of errors:</description>

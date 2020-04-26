@@ -34,11 +34,11 @@
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="AWS IoT - Pi in the sky"/>
-<meta name="twitter:description" content="Introduction With a high-level plan sketched out and a power detecting Raspberry Pi  at my disposal it was time to stay up late and start tapping!
+<meta name="twitter:description" content="Introduction With a high-level plan sketched out and a power detecting Raspberry Pi at my disposal it was time to stay up late and start tapping!
 As someone who&rsquo;s trying to reposition themselves as a &lsquo;backend developer&rsquo;, I knew I wanted to become familiar with Amazon Web Services (AWS). It might not be the answer to every solution, but it certainly felt like something that should be in my toolkit."/>
 
 <meta property="og:title" content="AWS IoT - Pi in the sky" />
-<meta property="og:description" content="Introduction With a high-level plan sketched out and a power detecting Raspberry Pi  at my disposal it was time to stay up late and start tapping!
+<meta property="og:description" content="Introduction With a high-level plan sketched out and a power detecting Raspberry Pi at my disposal it was time to stay up late and start tapping!
 As someone who&rsquo;s trying to reposition themselves as a &lsquo;backend developer&rsquo;, I knew I wanted to become familiar with Amazon Web Services (AWS). It might not be the answer to every solution, but it certainly felt like something that should be in my toolkit." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://sambriggs.dev/posts/detector-dag/aws-iot/" />
@@ -109,10 +109,8 @@ if (!doNotTrack) {
     <aside role="complementary">
         <div>
             Hey! This post is part of the
-            <a href='/series/detector-dag/'>
-                detector-dag
-            </a> series.
-            If this post is missing some context you could head there to get caught up.
+            <a href='/series/detector-dag/'>detector-dag</a>
+            series. If this post is missing some context you could head there to get caught up.
         </div>
     </aside>
     <hr />
@@ -120,10 +118,7 @@ if (!doNotTrack) {
     <article role="article">
         <h2 id="introduction">Introduction</h2>
 <p>With a high-level plan sketched out and a
-<a
-    href="/posts/detector-dag/power-detection/">
-    power detecting Raspberry Pi
-</a>
+<a href="/posts/detector-dag/power-detection/">power detecting Raspberry Pi</a>
 
 at my disposal it was time to stay up late and start tapping!</p>
 <p>As someone who&rsquo;s trying to reposition themselves as a &lsquo;backend developer&rsquo;, I knew I wanted to
@@ -133,23 +128,14 @@ certainly felt like something that should be in my toolkit.</p>
 I was in this for the cloud architecture lessons, so I wanted to get this end of the project done quickly
 and simply.</p>
 <h2 id="aws-iot">AWS IoT</h2>
-<p><a
-    href="https://aws.amazon.com/iot/"
-    target="_blank">
-    AWS IoT
-</a>
+<p><a href="https://aws.amazon.com/iot/"
+    target="_blank">AWS IoT</a>
  is a PaaS offering for getting connected &lsquo;things&rsquo; talking to
-the cloud (specifically, <em>Amazon&rsquo;s</em> cloud) using the ubiquitous <a
-    href="https://mqtt.org/"
-    target="_blank">
-    MQTT
-</a>
+the cloud (specifically, <em>Amazon&rsquo;s</em> cloud) using the ubiquitous <a href="https://mqtt.org/"
+    target="_blank">MQTT</a>
  protocol.
-I had initally thought might try out RabbitMQ and the more secure, and feature-rich <a
-    href="https://www.amqp.org/"
-    target="_blank">
-    AMQP
-</a>
+I had initally thought might try out RabbitMQ and the more secure, and feature-rich <a href="https://www.amqp.org/"
+    target="_blank">AMQP</a>
 ,
 protocol, but this seemed too handy to turn down. Leave some lessons for the future, eh?</p>
 <p>AWS IoT plugs some of the deficiencies of MQTT, such as authentication and encryption using certificates
@@ -161,24 +147,15 @@ when you watch your tiny Pi trying to compile numpy from source<sup id="fnref:1"
 <p>Sadly the AWS IoT Device SDK only came in Embedded C, Java, Javascript, and Python flavours. For me
 and my homebrew hack project, Python was the only answer.</p>
 <h2 id="source">Source</h2>
-<p>I kicked off the source as always do, using my <a
-    href="https://github.com/briggySmalls/cookiecutter-pypackage"
-    target="_blank">
-    cookiecutter template
-</a>
+<p>I kicked off the source as always do, using my <a href="https://github.com/briggySmalls/cookiecutter-pypackage"
+    target="_blank">cookiecutter template</a>
 
 to generate a python package with linting, testing, and dependency management ready-to-go.</p>
-<p>Next I found a <a
-    href="https://www.balena.io/blog/use-a-raspberry-pi-to-communicate-with-amazon-aws-iot/"
-    target="_blank">
-    tutorial
-</a>
+<p>Next I found a <a href="https://www.balena.io/blog/use-a-raspberry-pi-to-communicate-with-amazon-aws-iot/"
+    target="_blank">tutorial</a>
  on getting a Rasperry Pi, running BalenaOS sending messages
 to AWS IoT. Which by-and-large went to plan. I smugly handled the parsing of the certificates from environment
-variables using my <a
-    href="/posts/python-config/">
-    config class
-</a>
+variables using my <a href="/posts/python-config/">config class</a>
  pattern.</p>
 <p>This got me with the equivalent of a &lsquo;hello world&rsquo; IoT device, I could send MQTT messages to AWS IoT
 and see them arrive. Now to actually move to <em>my</em> solution.</p>
@@ -201,11 +178,8 @@ I ended up implementing something like this:</p>
 <code>device</code> database entry. I made the &lsquo;thing&rsquo; name the same as the device&rsquo;s <code>id</code> but that made creating
 new devices a bit of dance. Anyway, when you think about it, AWS maintatining a &lsquo;thing&rsquo; for me really
 <em>is</em> a database entry of sorts. It all felt a bit redundant.</p>
-<p>Enter the AWS IoT <a
-    href="https://docs.aws.amazon.com/iot/latest/developerguide/iot-device-shadows.html"
-    target="_blank">
-    Device Shadow Service
-</a>
+<p>Enter the AWS IoT <a href="https://docs.aws.amazon.com/iot/latest/developerguide/iot-device-shadows.html"
+    target="_blank">Device Shadow Service</a>
 . This service is designed for &lsquo;telemetry&rsquo; applications like
 mine - you have a device that reports its state to the cloud for other services to use.</p>
 <figure>
@@ -293,11 +267,8 @@ class used here was a simple helper I wrote to convert my boolean status into JS
             <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">RuntimeError</span>(
                 f<span style="color:#e6db74">&#34;Unexpected response_status: {response_status}&#34;</span>)
 
-</code></pre></div><p>You can see the full module in the <a
-    href="https://github.com/briggySmalls/detectordag/blob/26c629400ce043243ee235bd0241eeb69b4bccab/edge/edge/aws.py"
-    target="_blank">
-    GitHub repository
-</a>
+</code></pre></div><p>You can see the full module in the <a href="https://github.com/briggySmalls/detectordag/blob/26c629400ce043243ee235bd0241eeb69b4bccab/edge/edge/aws.py"
+    target="_blank">GitHub repository</a>
 .</p>
 <h2 id="conclusion">Conclusion</h2>
 <p>I&rsquo;ve skipped over some detail here, for example my rationle for using docker and BalenaOS for deploying
@@ -308,11 +279,8 @@ now get to work making the magic happen on the world wide web.</p>
 <hr>
 <ol>
 <li id="fn:1" role="doc-endnote">
-<p>I am aware of <a
-    href="https://www.piwheels.org/"
-    target="_blank">
-    PiWheels
-</a>
+<p>I am aware of <a href="https://www.piwheels.org/"
+    target="_blank">PiWheels</a>
 , but the docker images I found can&rsquo;t use them. <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
