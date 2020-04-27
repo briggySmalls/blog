@@ -14,7 +14,7 @@ job than I in convincing you.
 
 [12-factor-config]: https://12factor.net/config
 
-[^1]: It is with great embarrassement that I confess that despite oft-quoting this methodology, I've
+[^1]: It is with great embarrassment that I confess that despite oft-quoting this methodology, I've
 never read all of it, nor even do I know what all 12 factors _are_. It's on the to-do list.
 
 From my recent development in Go, I've become familiar with [cobra] and its close relative [viper].

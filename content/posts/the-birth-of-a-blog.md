@@ -27,7 +27,7 @@ Hugo. And whittled them down through opinionated first-impressions and prejudice
 [stackshare-generators]: https://stackshare.io/static-site-generators
 
 1. [Gatsby](https://www.gatsbyjs.org/) is react-based and seemed to be peddling [JAMstack](https://jamstack.org/)
-'webapp'. This sounded a lot like 'javascript bloat' for a blog use-case.
+'webapp'. This sounded a lot like 'JavaScript bloat' for a blog use-case.
 2. I'd used [Jekyll](https://jekyllrb.com/) once before, and for my chosen theme I had to commit some
 file dump and modify the theme files directly. Maybe this isn't always the case, but my experience
 scarred me. No theme updates?
@@ -78,7 +78,7 @@ If I had to learn some platform-specific configuration, I'd rather use one where
 hit a brick wall.
 
 So I built the site in a [CircleCI](https://circleci.com/) pipeline and deployed to GitHub pages. I
-like CircleCI because you can use docker images for each job, unlike e.g. travis, which can save some
+like CircleCI because you can use docker images for each job, unlike e.g. Travis, which can save some
 time installing dependencies.
 
 After following some [instructions][circleci-tutorial-github], the job that pushes to GitHub pages announced:

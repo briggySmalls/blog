@@ -20,7 +20,7 @@ error:
 
 ![GitHub pages 404](/github-pages-404.jpg)
 
-### HTML-proofer internal link checks
+### HTMLProofer internal link checks
 
 And when I ran the `htmlproofer` tool on my generated site I was greeted with a slew of errors:
 
