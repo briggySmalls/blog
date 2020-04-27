@@ -6,7 +6,7 @@ showDate: true
 tags: ["hugo", "github-pages"]
 ---
 
-I had a bit of a headscratcher yesterday, as I was writing the [Concepts]({{< relref "concepts.md" >}})
+I had a bit of a head-scratcher yesterday, as I was writing the [Concepts]({{< relref "concepts.md" >}})
 post and found that my slickly auto-generated architecture diagrams were missing from my posts. Navigating
 to the image source URLs was giving me the big fat 404 on GitHub pages:
 
