@@ -35,14 +35,14 @@
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Power detection"/>
-<meta name="twitter:description" content="I connected a Raspberry Pi to the UPSLite that I&rsquo;d identified in the concepts blog post. Right out of the box I could switch off power and the Pi would stay alive!
+<meta name="twitter:description" content="I connected a Raspberry Pi to the UPS-Lite that I&rsquo;d identified in the concepts blog post. Right out of the box I could switch off power and the Pi would stay alive!
 I moved on to detecting the power state changes with the Pi: I wanted to send MMQT messages with my AWS IoT client when these events occurred.
-Documentation on the UPSLite was thin on the ground, but I&rsquo;d found a tweet from the manufacturer that indicated I could detect this on the Pi&rsquo;s GPIO7:"/>
+Documentation on the UPS-Lite was thin on the ground, but I&rsquo;d found a tweet from the manufacturer that indicated I could detect this on the Pi&rsquo;s GPIO7:"/>
 
 <meta property="og:title" content="Power detection" />
-<meta property="og:description" content="I connected a Raspberry Pi to the UPSLite that I&rsquo;d identified in the concepts blog post. Right out of the box I could switch off power and the Pi would stay alive!
+<meta property="og:description" content="I connected a Raspberry Pi to the UPS-Lite that I&rsquo;d identified in the concepts blog post. Right out of the box I could switch off power and the Pi would stay alive!
 I moved on to detecting the power state changes with the Pi: I wanted to send MMQT messages with my AWS IoT client when these events occurred.
-Documentation on the UPSLite was thin on the ground, but I&rsquo;d found a tweet from the manufacturer that indicated I could detect this on the Pi&rsquo;s GPIO7:" />
+Documentation on the UPS-Lite was thin on the ground, but I&rsquo;d found a tweet from the manufacturer that indicated I could detect this on the Pi&rsquo;s GPIO7:" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://sambriggs.dev/posts/detector-dag/power-detection/" />
 <meta property="article:published_time" content="2020-04-26T12:48:14+01:00" />
@@ -112,16 +112,16 @@ if (!doNotTrack) {
     
     <article role="article">
         <p>I connected a Raspberry Pi to the <a href="https://www.aliexpress.com/item/32954180664.html"
-    rel="nofollow external">UPSLite</a>
+    rel="nofollow external">UPS-Lite</a>
  that I&rsquo;d
 identified in the <a href="/posts/detector-dag/concepts/">concepts</a>
  blog post. Right out of the box I could switch
 off power and the Pi would stay alive!</p>
-<p><img src="/upslite-and-pi.jpg" alt="UPSLite schematic"></p>
+<p><img src="/upslite-and-pi.jpg" alt="UPS-Lite schematic"></p>
 <p>I moved on to <em>detecting</em> the power state changes with the Pi: I wanted to send MMQT messages
 with my <a href="/posts/detector-dag/aws-iot/">AWS IoT client</a>
  when these events occurred.</p>
-<p>Documentation on the UPSLite was thin on the ground, but I&rsquo;d found a tweet
+<p>Documentation on the UPS-Lite was thin on the ground, but I&rsquo;d found a tweet
 from the manufacturer that indicated I could detect this on the Pi&rsquo;s GPIO7:</p>
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">the i2c pins ,gpio7 and 3V3 <a href="https://t.co/1GP8qrrSwB">pic.twitter.com/1GP8qrrSwB</a></p>&mdash; xiaoj_329 (@Xiaoj329) <a href="https://twitter.com/Xiaoj329/status/1069568475683647488?ref_src=twsrc%5Etfw">December 3, 2018</a></blockquote>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
@@ -134,7 +134,7 @@ from the manufacturer that indicated I could detect this on the Pi&rsquo;s GPIO7
 <a href="https://www.raspberrypi.org/documentation/usage/gpio/python/README.md"
     rel="nofollow external">recommended library</a>
  these days, and critically for me, it has a simple edge detection
-API. This allowed me to declaritively assign callbacks to be executed when an input pin changes
+API. This allowed me to declaratively assign callbacks to be executed when an input pin changes
 value - tidy.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> gpiozero <span style="color:#f92672">import</span> DigitalInputDevice  <span style="color:#75715e"># noqa: E501, pylint: disable=import-error,import-outside-toplevel</span>
 _POWER_PIN <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>  <span style="color:#75715e"># gpiozero uses Broadcom pin numbering</span>
@@ -154,7 +154,7 @@ but the example code demonstrated reading the voltage/capacity of the battery, n
 , and confirmed it <em>had</em> to be pin BCM4/WiringPi7, not least
 because I could <em>see</em> BCM7 wasn&rsquo;t connected to by a pogo pin.</p>
 <p>I manually read the pin a few times and whilst knocking it about found the voltage seemed to be floating:
-sometimes it was high, and sometimes low. Going <em>really</em> spare I got my multimeter out and confirmed
+sometimes it was high, and sometimes low. Going <em>really</em> spare I got my multi-meter out and confirmed
 it.</p>
 <p>I studied the owners manual, written in Chinese, pouring over the same wiring schematic I&rsquo;d found in
 the tweet: everything looked kosher.</p>
@@ -162,14 +162,14 @@ the tweet: everything looked kosher.</p>
     rel="nofollow external">translated manual</a>
  that revealed my error:</p>
 <blockquote>
-<p>Also UPS-Lite insertion detecting function with a power adapter, the insertion of the power pi io4
+<p>Also UPS-Lite insertion detecting function with a power adaptor, the insertion of the power pi io4
 (BCM number) detects the high level, when pulled low, enabling the weld shorting function requires two
 back of the UPS disc, as shown below in detail.</p>
 </blockquote>
-<p><img src="/upslite-pads.png" alt="UPSLite solder pads"></p>
+<p><img src="/upslite-pads.png" alt="UPS-Lite solder pads"></p>
 <p>I needed to short the two solder pads on the back of the board to have the pogo pin carry the power
 status signal! If my electronics knowledge had been better this is actually obvious from the schematic:</p>
-<p><img src="/upslite-schematic.png" alt="UPSLite schematic"></p>
+<p><img src="/upslite-schematic.png" alt="UPS-Lite schematic"></p>
 <p>&hellip;I&rsquo;m telling you, I felt like a right fool.</p>
 
     </article>
