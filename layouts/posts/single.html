@@ -40,5 +40,6 @@
             {{ with .NextInSection }}<a href="{{ .RelPermalink }} ">{{ .Title }} →</a>{{end}}
         </div>
     </aside>
-</div>
+    {{ partial "bottom_menu.html" (dict "Page" . "show_back_menu_item" true) }}
+</nav>
 {{ end }}
