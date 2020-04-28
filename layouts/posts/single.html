@@ -1,35 +1,17 @@
 {{ define "section_content" }}
 <div class="flex-container">
-    <!-- Display date, wordcount and tags -->
-    <aside role="complementary">
-        {{ .Date.Format (.Site.Params.dateForm | default "Mon Jan 02, 2006") }} &#183; {{ .WordCount }} words
-        <div class="tag-container">
-            {{ range $term := .Params.tags }}
-            {{ with $.Site.GetPage (printf "/%s/%s" "tags" $term | urlize) }}
-            <span class="tag">
-                <a href="{{ .RelPermalink }}">
-                    {{ $term }}
-                </a>
-            </span>
-            {{ end }}
-            {{ end }}
-        </div>
-    </aside>
-    <hr />
-    <!-- Add series header -->
-    {{ range .Params.series }}
-    <aside role="complementary">
-        <div>
-            Hey! This post is part of the
-            <a href='{{ ($.Site.GetPage "series" .).RelPermalink }}'>{{ . }}</a>
-            series. If this post is missing some context you could head there to get caught up.
-        </div>
-    </aside>
-    <hr />
+    {{ block "post_metadata" . }}
+    {{ partial "post_metadata.html" . }}
     {{ end }}
+    <hr />
     <article role="article">
         {{ .Content }}
     </article>
+</div>
+{{ end }}
+
+{{ define "bottom-menu" }}
+<nav role="navigation" class="flex-container bottom-menu">
     <!-- Add prev/next navigation -->
     <hr />
     <aside>
