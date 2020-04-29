@@ -1,0 +1,11 @@
+{{ $next := .NextInSection }}
+{{ $prev := .PrevInSection }}
+
+<aside>
+    <div>
+        {{ if $prev }}<a href="{{ $prev.RelPermalink }} ">← {{ $prev.Title }}</a>{{ end }}
+    </div>
+    <div>
+        {{ if $next }}<a href="{{ $next.RelPermalink }} ">{{ $next.Title }} →</a>{{ end }}
+    </div>
+</aside>

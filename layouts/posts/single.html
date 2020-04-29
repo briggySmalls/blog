@@ -14,14 +14,7 @@
 <nav role="navigation" class="flex-container bottom-menu">
     <!-- Add prev/next navigation -->
     <hr />
-    <aside>
-        <div>
-            {{ with .PrevInSection }}<a href="{{ .RelPermalink }} ">← {{ .Title }}</a>{{end}}
-        </div>
-        <div>
-            {{ with .NextInSection }}<a href="{{ .RelPermalink }} ">{{ .Title }} →</a>{{end}}
-        </div>
-    </aside>
+    {{ partial "navigation.html" . }}
     {{ partial "bottom_menu.html" (dict "Page" . "show_back_menu_item" true) }}
 </nav>
 {{ end }}
