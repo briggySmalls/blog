@@ -12,8 +12,8 @@
 
 {{ define "bottom-menu" }}
 <nav role="navigation" class="flex-container bottom-menu">
-    <!-- Add prev/next navigation -->
     <hr />
+    <!-- Add prev/next navigation -->
     {{ if .Params.series }}
         {{ $series := (.Site.Taxonomies.series.Get (index .Params.series 0)) }}
         {{ range $index, $page := $series }}
