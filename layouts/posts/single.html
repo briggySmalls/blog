@@ -15,6 +15,14 @@
     <!-- Add prev/next navigation -->
     <hr />
     {{ if .Params.series }}
+        {{ $series := (.Site.Taxonomies.series.Get (index .Params.series 0)) }}
+        {{ range $index, $page := $series }}
+            {{ if eq $page.Title $.Title }}
+                {{ $next := index $series (add $index 1) }}
+                {{ $prev := index $series (sub $index 1) }}
+                {{ partial "navigation.html" (dict "context" . "next" $next  "prev" $prev) }}
+            {{ end }}
+        {{ end }}
     {{ else }}
         {{ partial "navigation.html" (dict "context" . "next" .NextInSection "prev" .PrevInSection) }}
     {{ end }}
