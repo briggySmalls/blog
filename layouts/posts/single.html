@@ -19,7 +19,9 @@
         {{ range $index, $page := $series }}
             {{ if eq $page.Title $.Title }}
                 {{ $next := index $series (add $index 1) }}
+                {{ if not $next }}{{ $next = .NextInSection }}{{ end }}
                 {{ $prev := index $series (sub $index 1) }}
+                {{ if not $prev }}{{ $prev = .PrevInSection }}{{ end }}
                 {{ partial "navigation.html" (dict "context" . "next" $next  "prev" $prev) }}
             {{ end }}
         {{ end }}
