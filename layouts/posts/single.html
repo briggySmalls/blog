@@ -14,7 +14,11 @@
 <nav role="navigation" class="flex-container bottom-menu">
     <!-- Add prev/next navigation -->
     <hr />
-    {{ partial "navigation.html" . }}
+    {{ if .Params.series }}
+    {{ else }}
+        {{ partial "navigation.html" (dict "context" . "next" .NextInSection "prev" .PrevInSection) }}
+    {{ end }}
+
     {{ partial "bottom_menu.html" (dict "Page" . "show_back_menu_item" true) }}
 </nav>
 {{ end }}
